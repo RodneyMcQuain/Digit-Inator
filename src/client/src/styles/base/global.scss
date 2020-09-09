@@ -1,0 +1,18 @@
+@import '../utilities/colors';
+
+:root {
+    font-size: 6.25%;
+}
+
+body {
+    background-color: $dark-black;
+    color: $light-white;
+}
+
+h1 {
+    font-size: 32rem;
+}
+
+button {
+    cursor: pointer;
+}

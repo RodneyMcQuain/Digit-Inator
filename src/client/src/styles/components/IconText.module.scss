@@ -1,0 +1,9 @@
+@import '../utilities/spacing';
+
+.icon-text {
+    display: inline-flex;
+    
+    .icon {
+        margin-right: $minor-spacing;
+    }
+}
