@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, MutableRefObject } from 'react';
 import { getViewportWidth, getViewportHeight } from '../../services/dimensions';
 import styles from '../../styles/components/DrawingCanvas.module.scss';
+import { SM_BREAKPOINT_PX } from '../../styles/utilities/breakpoints';
 import { LIGHT_WHITE } from '../../styles/utilities/colors.scss';
 
 interface DrawingCanvasProps {
@@ -28,8 +29,8 @@ const useDrawingCanvas = (canvasRef: MutableRefObject<HTMLCanvasElement>) => {
 
     useEffect(() => {
         const canvas = canvasRef.current;
-        canvas.width = getViewportWidth() * 0.9;
-        canvas.height = getViewportHeight() * 0.75;
+        const setDimensionsLocal = () => setDimensions(canvas);
+        setDimensionsLocal();
         const ctx: CanvasRenderingContext2D = canvasRef.current.getContext('2d') as any;
         const start = (): void => { isDrawing.current = true; };
         const stop = (): void => { isDrawing.current = false; };
@@ -55,6 +56,8 @@ const useDrawingCanvas = (canvasRef: MutableRefObject<HTMLCanvasElement>) => {
             previousY.current = touchData.pageY - canvas.offsetTop;
         };
 
+        window.addEventListener('resize', setDimensionsLocal);
+
         canvasRef.current.addEventListener('mousedown', start, false);
         canvasRef.current.addEventListener('touchstart', touchStart, false);
 
@@ -67,6 +70,8 @@ const useDrawingCanvas = (canvasRef: MutableRefObject<HTMLCanvasElement>) => {
         canvasRef.current.addEventListener('touchmove', touchMove, false);
 
         return () => {
+            window.addEventListener('resize', setDimensionsLocal);
+
             canvasRef.current.removeEventListener('mousedown', start);
             canvasRef.current.removeEventListener('touchstart', start);
 
@@ -83,17 +88,42 @@ const useDrawingCanvas = (canvasRef: MutableRefObject<HTMLCanvasElement>) => {
     return canvasRef;
 };
 
+const setDimensions = (canvas: HTMLCanvasElement) => {
+    const viewportWidth = getViewportWidth();
+    const viewportHeight = getViewportHeight();
+    const DEFAULT_WIDTH_PX = 300;
+    const DEFAULT_HEIGHT_PX = 400;
+
+    if (viewportWidth > SM_BREAKPOINT_PX) {
+        setCanvasPropertyIfChanged('width', DEFAULT_WIDTH_PX, canvas);
+        setCanvasPropertyIfChanged('height', DEFAULT_HEIGHT_PX, canvas);
+    } else {
+        const HORIZONTAL_PADDING = 10;
+        const newWidth = Math.min(viewportWidth - (HORIZONTAL_PADDING * 2), DEFAULT_WIDTH_PX);
+        setCanvasPropertyIfChanged('width', newWidth, canvas);
+        
+        const newHeight = Math.min(viewportHeight * 0.75, DEFAULT_HEIGHT_PX);
+        setCanvasPropertyIfChanged('height', newHeight, canvas);
+    }
+}
+
+type CanvasProperty = 'width' | 'height';
+const setCanvasPropertyIfChanged = (property: CanvasProperty, newValue: number, canvas: HTMLCanvasElement): void => {
+    if (newValue !== canvas[property])
+        canvas[property] = newValue;
+};
+
 const draw = (
     canvas: HTMLCanvasElement,
-    ctx: CanvasRenderingContext2D, 
-    isDrawing: boolean, 
+    ctx: CanvasRenderingContext2D,
+    isDrawing: boolean,
     cursorLocation: Point,
-    previousX: MutableRefObject<number>, 
+    previousX: MutableRefObject<number>,
     previousY: MutableRefObject<number>
 ) => {
     const currentX = cursorLocation.x - canvas.offsetLeft;
     const currentY = cursorLocation.y - canvas.offsetTop;
-    
+
     if (isDrawing)
         drawline(ctx, currentX, currentY, previousX.current, previousY.current);
 

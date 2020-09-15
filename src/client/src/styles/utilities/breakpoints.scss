@@ -1,0 +1,11 @@
+$sm-breakpoint: 576rem;
+$md-breakpoint: 768rem;
+$lg-breakpoint: 992rem;
+$xl-breakpoint: 1200rem;
+
+:export {
+    SM_BREAKPOINT: $sm-breakpoint;
+    MD_BREAKPOINT: $md-breakpoint;
+    LG_BREAKPOINT: $lg-breakpoint;
+    XL_BREAKPOINT: $xl-breakpoint
+}
