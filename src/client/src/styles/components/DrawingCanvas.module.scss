@@ -1,12 +1,10 @@
+@import '../utilities/colors';
+@import '../utilities/layered-box-shadow';
+
 .drawing-canvas {
-    background: #444;
+    background: $light-black;
     border-radius: 4rem;
     cursor: url(../../assets/pencil.svg) 0 25, auto;
-    box-shadow:
-        0 1rem 1rem rgba(0,0,0,.11), 
-        0 2rem 2rem rgba(0,0,0,.11), 
-        0 4rem 4rem rgba(0,0,0,.11), 
-        0 8rem 8rem rgba(0,0,0,.11),
-        0 16rem 16rem rgba(0,0,0,.11), 
-        0 32rem 32rem rgba(0,0,0,.11)
+    box-shadow: get-layered-box-shadow();
+
 }

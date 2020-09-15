@@ -1,0 +1,62 @@
+@import "../utilities/layered-box-shadow";
+@import "../utilities/transition-time";
+@import "../utilities/colors";
+
+.button {
+    display: inline-flex;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+
+    cursor: pointer;
+
+    background: $primary-accent-color;
+    color: $light-white;
+    
+    border: none;
+    outline: none;
+    
+    border-radius: 4rem;
+    padding: 7rem 14rem;
+    box-shadow: get-layered-box-shadow();
+
+    $button-transition-time: $default-transition-time;
+    transition: 
+        $button-transition-time background-color ease-in-out, 
+        $button-transition-time color ease-in-out;
+
+    &:hover {
+        background: $secondary-accent-color;
+        color: $primary-accent-color;
+    }
+
+    &:after {
+        content: "";
+        display: none;
+        position: absolute;
+        border-radius: 50%;
+        background-color: rgba(200, 200, 200, 0.4);
+
+        $size: 50rem;
+        $margin: ($size/2)*-1;
+        width: $size;
+        height: $size;
+        margin-top: $margin;
+        margin-left: $margin;
+
+        top: 50%;
+        left: 50%;
+
+        animation: ripple 1.5s;
+        opacity: 0;
+    }
+
+    &:focus:not(:active)::after {
+        display: block;
+    }
+
+    @keyframes ripple {
+        from { opacity: 1; transform: scale(0); }
+        to { opacity: 0; transform: scale(10); }
+    }
+}

@@ -1,0 +1,15 @@
+@function get-layered-box-shadow($x-offset: 0, $number-of-layers: 6) {
+    $box-shadows: '';
+    $current: 1;
+    
+    @for $i from 1 through $number-of-layers {
+        $x-offset-actual:  unquote('-' + ($current * $x-offset) + 'rem');
+        $y-offset--blur-radius: unquote($current + 'rem');
+        $shadow: $x-offset-actual $y-offset--blur-radius $y-offset--blur-radius rgba(0,0,0,0.11);
+        $box-shadows: $box-shadows + $shadow + ' ,';
+
+        $current: $current * 2;
+    }
+
+    @return str_slice(unquote($box-shadows), 0, str_length($box-shadows) - 1);
+}
