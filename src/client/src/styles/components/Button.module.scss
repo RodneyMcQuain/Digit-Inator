@@ -10,8 +10,8 @@
 
     cursor: pointer;
 
-    background: $primary-accent-color;
-    color: $light-white;
+    background: $secondary-accent-color;
+    color: $primary-accent-color;
     
     border: none;
     outline: none;
@@ -26,8 +26,8 @@
         $button-transition-time color ease-in-out;
 
     &:hover {
-        background: $secondary-accent-color;
-        color: $primary-accent-color;
+        background: $primary-accent-color;
+        color: $light-white;
     }
 
     &:after {

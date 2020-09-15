@@ -8,9 +8,14 @@
     font-size: 6.25%;
 }
 
+html {
+    scroll-behavior: smooth;
+}
+
 body {
     background-color: $dark-black;
     color: $light-white;
+    margin-bottom: 75rem;
 }
 
 h1 {

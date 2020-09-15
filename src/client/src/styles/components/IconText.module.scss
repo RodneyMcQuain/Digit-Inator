@@ -6,8 +6,8 @@
         align-items: center;
     }    
 
-    .icon {
-        font-size: 1.15em;
+    > span { // .icon
+        display: inline-flex;
         margin-right: $minor-spacing;
     }
 }

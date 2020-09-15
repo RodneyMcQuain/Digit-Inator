@@ -1,5 +1,6 @@
 import React from 'react';
 import styles from '../styles/components/IconText.module.scss';
+import Icon from './Icon';
 
 interface IconTextProps {
     icon: JSX.Element;
@@ -8,7 +9,7 @@ interface IconTextProps {
 
 const IconText = ({ icon, text }: IconTextProps) => (
     <span className={styles['icon-text']}>
-        <span className={styles.icon}>{icon}</span> {text}
+        <Icon icon={icon} /> {text}
     </span>
 );
 

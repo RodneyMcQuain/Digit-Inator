@@ -6,5 +6,5 @@
     border-radius: 4rem;
     cursor: url(../../assets/pencil.svg) 0 25, auto;
     box-shadow: get-layered-box-shadow();
-
+    touch-action: none;
 }

@@ -29,7 +29,7 @@ const useDrawingCanvas = (canvasRef: MutableRefObject<HTMLCanvasElement>) => {
     useEffect(() => {
         const canvas = canvasRef.current;
         canvas.width = getViewportWidth() * 0.9;
-        canvas.height = getViewportHeight() * 0.8;
+        canvas.height = getViewportHeight() * 0.75;
         const ctx: CanvasRenderingContext2D = canvasRef.current.getContext('2d') as any;
         const start = (): void => { isDrawing.current = true; };
         const stop = (): void => { isDrawing.current = false; };
@@ -43,16 +43,16 @@ const useDrawingCanvas = (canvasRef: MutableRefObject<HTMLCanvasElement>) => {
         const touchMove = (e: TouchEvent) => {
             const touchData = e.touches[0];
             const points = {
-                x: touchData.clientX,
-                y: touchData.clientY,
+                x: touchData.pageX,
+                y: touchData.pageY,
             };
             draw(canvas, ctx, isDrawing.current, points, previousX, previousY);
         };
         const touchStart = (e: TouchEvent) => {
             start();
             const touchData = e.touches[0];
-            previousX.current = touchData.clientX - canvas.offsetLeft;
-            previousY.current = touchData.clientY - canvas.offsetTop;
+            previousX.current = touchData.pageX - canvas.offsetLeft;
+            previousY.current = touchData.pageY - canvas.offsetTop;
         };
 
         canvasRef.current.addEventListener('mousedown', start, false);
@@ -105,7 +105,7 @@ const drawline = (ctx: CanvasRenderingContext2D, x1: number, y1: number, x2: num
     ctx.strokeStyle = DRAW_COLOR;
     ctx.lineJoin = "round";
     ctx.lineWidth = BRUSH_SIZE_PX;
-
+    
     ctx.beginPath();
     ctx.moveTo(x1, y1);
     ctx.lineTo(x2, y2);
