@@ -5,9 +5,9 @@ import styles from './styles/components/App.module.css';
 import DrawingCanvasContainer from './components/Drawing/DrawingCanvasContainer';
 import Banner from './components/Banner/Banner';
 import { detection } from './services/anchors';
+import { appName } from './services/appName';
 
 function App() {
-    const title = "Digit-Inator";
     return (
         <>
             <Banner />
@@ -15,7 +15,7 @@ function App() {
                 <Helmet>
                     <html lang="en" />
                     <meta charSet="utf-8" />
-                    <title>{title}</title>
+                    <title>{appName}</title>
                     <meta name="description" content="Nested component" />
                 </Helmet>
                 <header>
