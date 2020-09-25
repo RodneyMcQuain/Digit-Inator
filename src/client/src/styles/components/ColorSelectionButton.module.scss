@@ -1,0 +1,21 @@
+@import '../utilities/spacing';
+@import '../utilities/font-sizes';
+
+$font-size-addition: 0.5em;
+
+.color-picker {
+    background: none;
+    width: 1em + $font-size-addition;
+    height: 1em + $font-size-addition;
+    font-size: $normal-font-size;
+
+    cursor: pointer;
+    border: none;
+    padding: -$font-size-addition;
+    
+    margin-right: calc(#{$minor-spacing} + #{$font-size-addition});
+}
+
+.color-picker-container {
+    margin: -$font-size-addition;
+}

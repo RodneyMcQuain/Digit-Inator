@@ -25,7 +25,11 @@ h1, h2, h3, h4, h5, h6 {
     font-family: "Monsterrat", Verdana, Geneva, Tahoma, sans-serif;
 }
 
-p, div, span, button, a, li {
+p, div, span, button, a, li, label {
     font-family: "Karla", Arial, Helvetica, sans-serif;
     font-size: $normal-font-size;
+}
+
+.cursor-pointer {
+    cursor: pointer;
 }

@@ -2,4 +2,8 @@
 
 .drawing-canvas-container button {
     margin-top: $default-spacing;
+
+    &:not(:last-child) {
+        margin-right: $default-spacing;
+    }
 }

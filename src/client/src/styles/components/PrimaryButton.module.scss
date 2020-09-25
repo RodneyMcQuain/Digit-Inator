@@ -1,0 +1,11 @@
+@import "../utilities/colors";
+
+.primary-button {
+    background: $secondary-accent-color;
+    color: $primary-accent-color;
+
+    &:hover {
+        background: $primary-accent-color;
+        color: $light-white;
+    }
+}
