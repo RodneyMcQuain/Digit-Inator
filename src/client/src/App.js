@@ -1,7 +1,7 @@
 import React from 'react';
 import { Helmet } from 'react-helmet';
 import './styles/base/global.scss';
-import styles from './styles/components/App.module.css';
+import styles from './styles/components/App.module.scss';
 import DrawingCanvasContainer from './components/Drawing/DrawingCanvasContainer';
 import Banner from './components/Banner/Banner';
 import { detection } from './services/anchors';

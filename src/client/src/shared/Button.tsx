@@ -4,10 +4,13 @@ import styles from '../styles/components/Button.module.scss';
 interface ButtonProps {
     children: JSX.Element | JSX.Element[];
     onClick: () => void | ((event: MouseEvent) => void);
+    className: string;
 }
 
-const Button = ({ children, onClick }: ButtonProps) => (
-    <button onClick={onClick} className={styles.button}>{children}</button>
+const Button = ({ children, onClick, className }: ButtonProps) => (
+    <button onClick={onClick} className={`${styles.button} ${className}`}>
+        {children}
+    </button>
 );
 
 export default Button;

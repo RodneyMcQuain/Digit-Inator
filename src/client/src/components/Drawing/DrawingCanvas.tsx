@@ -2,10 +2,10 @@ import React, { useEffect, useRef, MutableRefObject } from 'react';
 import { getViewportWidth, getViewportHeight } from '../../services/dimensions';
 import styles from '../../styles/components/DrawingCanvas.module.scss';
 import { SM_BREAKPOINT_PX } from '../../styles/utilities/breakpoints';
-import { LIGHT_WHITE } from '../../styles/utilities/colors.scss';
 
 interface DrawingCanvasProps {
     canvasRef: MutableRefObject<HTMLCanvasElement>;
+    strokeColor: string;
 }
 
 interface Point {
@@ -14,15 +14,14 @@ interface Point {
 }
 
 const BRUSH_SIZE_PX = 2.5;
-const DRAW_COLOR = LIGHT_WHITE;
 
-const DrawingCanvas = ({ canvasRef }: DrawingCanvasProps) => {
-    useDrawingCanvas(canvasRef);
+const DrawingCanvas = ({ canvasRef, strokeColor }: DrawingCanvasProps) => {
+    useDrawingCanvas(canvasRef, strokeColor);
 
     return <canvas className={styles['drawing-canvas']} ref={canvasRef} />;
 };
 
-const useDrawingCanvas = (canvasRef: MutableRefObject<HTMLCanvasElement>) => {
+const useDrawingCanvas = (canvasRef: MutableRefObject<HTMLCanvasElement>, strokeColor: string) => {
     const previousX = useRef<number>(0);
     const previousY = useRef<number>(0);
     const isDrawing = useRef<boolean>(false);
@@ -39,7 +38,7 @@ const useDrawingCanvas = (canvasRef: MutableRefObject<HTMLCanvasElement>) => {
                 x: e.pageX,
                 y: e.pageY,
             };
-            draw(canvas, ctx, isDrawing.current, points, previousX, previousY);
+            draw(canvas, ctx, isDrawing.current, points, previousX, previousY, strokeColor);
         };
         const touchMove = (e: TouchEvent) => {
             const touchData = e.touches[0];
@@ -47,7 +46,7 @@ const useDrawingCanvas = (canvasRef: MutableRefObject<HTMLCanvasElement>) => {
                 x: touchData.pageX,
                 y: touchData.pageY,
             };
-            draw(canvas, ctx, isDrawing.current, points, previousX, previousY);
+            draw(canvas, ctx, isDrawing.current, points, previousX, previousY, strokeColor);
         };
         const touchStart = (e: TouchEvent) => {
             start();
@@ -58,32 +57,32 @@ const useDrawingCanvas = (canvasRef: MutableRefObject<HTMLCanvasElement>) => {
 
         window.addEventListener('resize', setDimensionsLocal);
 
-        canvasRef.current.addEventListener('mousedown', start, false);
-        canvasRef.current.addEventListener('touchstart', touchStart, false);
+        canvas.addEventListener('mousedown', start, false);
+        canvas.addEventListener('touchstart', touchStart, false);
 
-        canvasRef.current.addEventListener('mouseup', stop, false);
-        canvasRef.current.addEventListener('touchend', stop, false);
+        canvas.addEventListener('mouseup', stop, false);
+        canvas.addEventListener('touchend', stop, false);
 
-        canvasRef.current.addEventListener('mouseleave', stop, false);
+        canvas.addEventListener('mouseleave', stop, false);
 
-        canvasRef.current.addEventListener('mousemove', mouseMove, false);
-        canvasRef.current.addEventListener('touchmove', touchMove, false);
+        canvas.addEventListener('mousemove', mouseMove, false);
+        canvas.addEventListener('touchmove', touchMove, false);
 
         return () => {
             window.addEventListener('resize', setDimensionsLocal);
 
-            canvasRef.current.removeEventListener('mousedown', start);
-            canvasRef.current.removeEventListener('touchstart', start);
+            canvas.removeEventListener('mousedown', start);
+            canvas.removeEventListener('touchstart', start);
 
-            canvasRef.current.removeEventListener('mouseup', stop);
-            canvasRef.current.removeEventListener('touchend', stop);
+            canvas.removeEventListener('mouseup', stop);
+            canvas.removeEventListener('touchend', stop);
 
-            canvasRef.current.removeEventListener('mouseleave', stop);
+            canvas.removeEventListener('mouseleave', stop);
 
-            canvasRef.current.removeEventListener('mousemove', mouseMove);
-            canvasRef.current.removeEventListener('touchmove', touchMove);
+            canvas.removeEventListener('mousemove', mouseMove);
+            canvas.removeEventListener('touchmove', touchMove);
         };
-    }, [canvasRef, canvasRef.current]);
+    }, [canvasRef, strokeColor]);
 
     return canvasRef;
 };
@@ -119,20 +118,28 @@ const draw = (
     isDrawing: boolean,
     cursorLocation: Point,
     previousX: MutableRefObject<number>,
-    previousY: MutableRefObject<number>
+    previousY: MutableRefObject<number>,
+    strokeColor: string
 ) => {
     const currentX = cursorLocation.x - canvas.offsetLeft;
     const currentY = cursorLocation.y - canvas.offsetTop;
 
     if (isDrawing)
-        drawline(ctx, currentX, currentY, previousX.current, previousY.current);
+        drawline(ctx, currentX, currentY, previousX.current, previousY.current, strokeColor);
 
     previousX.current = currentX;
     previousY.current = currentY;
 };
 
-const drawline = (ctx: CanvasRenderingContext2D, x1: number, y1: number, x2: number, y2: number) => {
-    ctx.strokeStyle = DRAW_COLOR;
+const drawline = (
+    ctx: CanvasRenderingContext2D, 
+    x1: number,
+    y1: number, 
+    x2: number, 
+    y2: number, 
+    strokeColor: string
+) => {
+    ctx.strokeStyle = strokeColor;
     ctx.lineJoin = "round";
     ctx.lineWidth = BRUSH_SIZE_PX;
     
