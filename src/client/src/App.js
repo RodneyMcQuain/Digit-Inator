@@ -5,7 +5,7 @@ import styles from './styles/components/App.module.css';
 import DrawingCanvasContainer from './components/Drawing/DrawingCanvasContainer';
 import Banner from './components/Banner/Banner';
 import { detection } from './services/anchors';
-import { appName } from './services/appName';
+import { appName, description } from './services/siteMetaData';
 
 function App() {
     return (
@@ -16,7 +16,7 @@ function App() {
                     <html lang="en" />
                     <meta charSet="utf-8" />
                     <title>{appName}</title>
-                    <meta name="description" content="Nested component" />
+                    <meta name="description" content={description} />
                 </Helmet>
                 <header>
                     <h1 id={detection}>Number Detection</h1>
