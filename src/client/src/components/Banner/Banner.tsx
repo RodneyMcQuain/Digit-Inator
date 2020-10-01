@@ -5,7 +5,7 @@ import styles from '../../styles/components/Banner.module.scss';
 import { AiOutlineDown } from 'react-icons/ai';
 import Icon from '../../shared/Icon';
 import { detection } from '../../services/anchors';
-import { appName } from '../../services/appName';
+import { appName } from '../../services/siteMetaData';
 
 const backgroundImage = `linear-gradient(
     rgba(0, 0, 0, 0.9),
