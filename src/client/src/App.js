@@ -4,8 +4,8 @@ import './styles/base/global.scss';
 import styles from './styles/components/App.module.scss';
 import DrawingCanvasContainer from './components/Drawing/DrawingCanvasContainer';
 import Banner from './components/Banner/Banner';
-import { detection } from './services/anchors';
 import { appName, description } from './services/siteMetaData';
+import Footer from './components/Footer';
 
 function App() {
     return (
@@ -18,13 +18,11 @@ function App() {
                     <title>{appName}</title>
                     <meta name="description" content={description} />
                 </Helmet>
-                <header>
-                    <h1 id={detection}>Number Detection</h1>
-                </header>
                 <div className="drawing-container">
                     <DrawingCanvasContainer />
                 </div>
             </div>
+            <Footer />
         </>
     );
 }

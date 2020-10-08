@@ -1,0 +1,8 @@
+@import '../utilities/spacing';
+@import '../utilities/colors';
+
+footer {
+    margin: $default-spacing 0 $default-spacing $default-spacing;
+    position: absolute;
+    color: $dark-white;
+}
