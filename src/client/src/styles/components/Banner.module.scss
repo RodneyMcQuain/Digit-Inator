@@ -23,7 +23,7 @@ $banner-header-font-size: 50rem;
     .banner-header {
         font-weight: bold;
         font-size: $banner-header-font-size;
-        color: white;
+        color: $light-white;
         text-shadow: 2px 2px black;
         margin: 0;
         margin-bottom: 20rem;
@@ -41,7 +41,7 @@ $banner-header-font-size: 50rem;
                 font-size: 20rem;
             }
 
-            color: lightgray;
+            color: $dark-white;
         }
     }
 }
