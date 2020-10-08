@@ -1,0 +1,20 @@
+{
+    "name": "Digit-Inator-Root",
+    "version": "1.0.0",
+    "main": "index.ts",
+    "repository": "https://CS360@dev.azure.com/CS360/CS372-Fall-2020-Semester-Project/_git/CS372-Fall-2020-Semester-Project",
+    "author": "Rodney McQuain <rodneymcquain95@gmail.com>",
+    "license": "MIT",
+    "scripts": {
+        "server:build": "yarn --cwd ./src/server",
+        "client:build": "yarn --cwd ./src/client",
+        "root:build": "yarn",
+        "server:dev": "yarn --cwd ./src/server dev",
+        "client:dev": "yarn --cwd ./src/client dev",
+        "dev": "npm-run-all -p -r server:dev client:dev",
+        "build": "npm-run-all -p -r root:build server:build client:build"
+    },
+    "devDependencies": {
+        "npm-run-all": "^4.1.5"
+    }
+}
