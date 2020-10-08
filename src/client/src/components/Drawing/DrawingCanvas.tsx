@@ -1,7 +1,6 @@
 import React, { useEffect, useRef, MutableRefObject } from 'react';
 import { getViewportWidth, getViewportHeight } from '../../services/dimensions';
 import styles from '../../styles/components/DrawingCanvas.module.scss';
-import { SM_BREAKPOINT_PX } from '../../styles/utilities/breakpoints';
 
 interface DrawingCanvasProps {
     canvasRef: MutableRefObject<HTMLCanvasElement>;
@@ -93,19 +92,15 @@ const setDimensions = (canvas: HTMLCanvasElement) => {
     const DEFAULT_WIDTH_PX = 300;
     const DEFAULT_HEIGHT_PX = 400;
 
-    if (viewportWidth > SM_BREAKPOINT_PX) {
-        setCanvasPropertyIfChanged('width', DEFAULT_WIDTH_PX, canvas);
-        setCanvasPropertyIfChanged('height', DEFAULT_HEIGHT_PX, canvas);
-    } else {
-        const HORIZONTAL_PADDING = 10;
-        const newWidth = Math.min(viewportWidth - (HORIZONTAL_PADDING * 2), DEFAULT_WIDTH_PX);
-        setCanvasPropertyIfChanged('width', newWidth, canvas);
-        
-        const newHeight = Math.min(viewportHeight * 0.75, DEFAULT_HEIGHT_PX);
-        setCanvasPropertyIfChanged('height', newHeight, canvas);
-    }
+    const HORIZONTAL_PADDING = 10;
+    const newWidth = Math.min(viewportWidth - (HORIZONTAL_PADDING * 2), DEFAULT_WIDTH_PX);
+    setCanvasPropertyIfChanged('width', newWidth, canvas);
+
+    const newHeight = Math.min(viewportHeight * 0.75, DEFAULT_HEIGHT_PX);
+    setCanvasPropertyIfChanged('height', newHeight, canvas);
 }
 
+// This check is needed to prevent the canvas from being cleared when it's not necessary
 type CanvasProperty = 'width' | 'height';
 const setCanvasPropertyIfChanged = (property: CanvasProperty, newValue: number, canvas: HTMLCanvasElement): void => {
     if (newValue !== canvas[property])
@@ -132,17 +127,17 @@ const draw = (
 };
 
 const drawline = (
-    ctx: CanvasRenderingContext2D, 
+    ctx: CanvasRenderingContext2D,
     x1: number,
-    y1: number, 
-    x2: number, 
-    y2: number, 
+    y1: number,
+    x2: number,
+    y2: number,
     strokeColor: string
 ) => {
     ctx.strokeStyle = strokeColor;
     ctx.lineJoin = "round";
     ctx.lineWidth = BRUSH_SIZE_PX;
-    
+
     ctx.beginPath();
     ctx.moveTo(x1, y1);
     ctx.lineTo(x2, y2);
