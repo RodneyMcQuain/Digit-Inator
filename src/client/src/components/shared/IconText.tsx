@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from '../styles/components/IconText.module.scss';
+import styles from '../../styles/components/shared/IconText.module.scss';
 import Icon from './Icon';
 
 interface IconTextProps {

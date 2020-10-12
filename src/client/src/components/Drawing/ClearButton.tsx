@@ -1,7 +1,7 @@
 import React, { MutableRefObject } from 'react';
 import { RiDeleteBin2Line } from 'react-icons/ri';
-import IconText from '../../shared/IconText';
-import PrimaryButton from '../../shared/PrimaryButton';
+import IconText from '../shared/IconText';
+import PrimaryButton from '../shared/buttons/PrimaryButton';
 
 interface ClearButtonProps {
     canvasRef: MutableRefObject<HTMLCanvasElement>;

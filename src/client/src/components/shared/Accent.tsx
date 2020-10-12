@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from '../styles/components/Accent.module.scss';
+import styles from '../../styles/components/shared/Accent.module.scss';
 
 interface AccentProps {
     children: string;

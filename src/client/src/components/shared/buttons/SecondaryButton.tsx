@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from '../styles/components/SecondaryButton.module.scss';
+import styles from '../../../styles/components/shared/buttons/SecondaryButton.module.scss';
 import Button from './Button';
 
 interface SecondaryButtonProps {

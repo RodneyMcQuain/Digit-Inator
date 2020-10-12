@@ -1,0 +1,16 @@
+@import "../../../utilities/colors";
+@import "./button-utilities";
+
+.secondary-button {
+    background: none;
+    color: $secondary-accent-color;
+    
+    $border-size: 1rem;
+    border: $border-size solid $secondary-accent-color;
+    padding: ($button-vertical-padding - $border-size) ($button-horizontal-padding - $border-size);
+
+    &:hover {
+        background: $secondary-accent-color;
+        color: $primary-accent-color;
+    }
+}

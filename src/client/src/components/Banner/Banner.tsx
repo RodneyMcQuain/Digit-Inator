@@ -1,9 +1,9 @@
 import React, { useEffect } from 'react';
 import { useAddCssClass } from '../../services/useAddCssClass';
-import Accent from '../../shared/Accent';
+import Accent from '../shared/Accent';
 import styles from '../../styles/components/Banner.module.scss';
 import { AiOutlineDown } from 'react-icons/ai';
-import Icon from '../../shared/Icon';
+import Icon from '../shared/Icon';
 import { detection } from '../../services/anchors';
 import { appName } from '../../services/siteMetaData';
 
