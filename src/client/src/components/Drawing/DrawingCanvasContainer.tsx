@@ -6,7 +6,7 @@ import { LIGHT_WHITE } from '../../styles/utilities/colors.scss';
 import ColorSelectionButton from './ColorSelectionButton';
 import DetectButton from './DetectButton';
 import { detection } from '../../services/anchors';
-import ShowPredictions from './Predictions';
+import Predictions from './Predictions';
 
 const DrawingCanvasContainer = () => {
     const canvasRef = useRef() as MutableRefObject<HTMLCanvasElement>;
@@ -21,8 +21,11 @@ const DrawingCanvasContainer = () => {
             <ClearButton canvasRef={canvasRef} />
             <br/>
             <DetectButton canvasRef={canvasRef} setPredictions={setPredictions} />
-            <ShowPredictions predictions={predictions} />
+            <br />
+            <br />
+            <Predictions predictions={predictions} />
         </div>
     );
 };
+
 export default DrawingCanvasContainer;

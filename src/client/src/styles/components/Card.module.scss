@@ -1,11 +1,12 @@
+@import '../utilities/spacing';
 @import '../utilities/colors';
-@import '../utilities/layered-box-shadow';
 @import '../utilities/border-radius';
+@import '../utilities/layered-box-shadow';
 
-.drawing-canvas {
+.card {
+    display: inline-block;
     background: $light-black;
     border-radius: $minor-border-radius;
-    cursor: url(../../assets/pencil.svg) 0 25, auto;
+    padding: $default-spacing $default-spacing * 1.5;
     box-shadow: get-layered-box-shadow();
-    touch-action: none;
 }

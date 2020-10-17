@@ -1,10 +1,10 @@
 import React, { MutableRefObject } from 'react';
-import styles from '../../styles/components/GradientButton.module.scss';
-import { FiBarChart2 } from 'react-icons/fi';
-import IconText from '../../shared/IconText';
-import Button from '../../shared/Button';
 import detect from '../../services/mnist/numberDetection';
-
+import GradientButton from '../shared/buttons/GradientButton';
+import IconText from '../shared/IconText';
+import { FiBarChart2 } from 'react-icons/fi';
+import { detectionResult } from '../../services/anchors';
+import styles from '../../styles/components/DetectButton.module.scss';
 
 interface DetectButtonProps {
     canvasRef: MutableRefObject<HTMLCanvasElement>;
@@ -12,9 +12,11 @@ interface DetectButtonProps {
 }
 
 const DetectButton = ({ canvasRef, setPredictions }: DetectButtonProps) => (
-    <Button onClick={() => {detectButtonHandler(canvasRef.current, setPredictions)}} className={styles['gradient-button']}>
-        <IconText icon={<FiBarChart2 />} text="Detect" />
-    </Button>
+    <a className={styles['detect-button-anchor']} href={`#${detectionResult}`}>
+        <GradientButton onClick={() => {detectButtonHandler(canvasRef.current, setPredictions)}}>
+            <IconText icon={<FiBarChart2 />} text="Detect" />
+        </GradientButton>
+    </a>
 );
 
 const detectButtonHandler = async (canvas: HTMLCanvasElement, setPredictions: (predictions: number[]) => void) => { 
