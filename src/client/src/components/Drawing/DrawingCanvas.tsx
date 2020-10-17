@@ -12,7 +12,7 @@ interface Point {
     y: number;
 }
 
-const BRUSH_SIZE_PX = 2.5;
+const BRUSH_SIZE_PX = 10;
 
 const DrawingCanvas = ({ canvasRef, strokeColor }: DrawingCanvasProps) => {
     useDrawingCanvas(canvasRef, strokeColor);

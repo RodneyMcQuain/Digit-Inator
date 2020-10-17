@@ -1,0 +1,30 @@
+@import '../utilities/colors';
+@import '../utilities/font-sizes';
+
+.gradient-button {
+    color: $light-white;
+    
+    background: linear-gradient(-45deg, $primary-accent-color, #9100b3, #0022b3);
+    background-size: 400% 400%;
+    animation: gradient 7.5s ease infinite, minor-pulse 2s ease-in-out infinite;
+    
+    * {
+        font-size: $normal-font-size + 6rem;
+    }
+
+    &:hover {
+        animation-play-state: paused;
+    }
+}
+
+@keyframes gradient {
+	0% { background-position: 0% 50%; }
+	50% { background-position: 100% 50%; }
+	100% { background-position: 0% 50%; }
+}
+
+@keyframes minor-pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+}
