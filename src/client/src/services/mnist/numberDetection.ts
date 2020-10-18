@@ -1,7 +1,8 @@
 import * as tf from '@tensorflow/tfjs';
+import { loadModel } from './loadModel';
 
 async function detect(imgdata:ImageData): Promise<number[]> {
-  const model = await tf.loadLayersModel("model/model.json");
+  const model = await loadModel();
   let tensor = tf.browser.fromPixels(imgdata, 1)
     .resizeNearestNeighbor([28, 28])
     .expandDims(0)
