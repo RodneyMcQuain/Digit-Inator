@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Helmet } from 'react-helmet';
 import './styles/base/global.scss';
 import styles from './styles/components/App.module.scss';
@@ -7,9 +7,14 @@ import Banner from './components/Banner/Banner';
 import { appName, description } from './services/siteMetaData';
 import Footer from './components/Footer';
 import { loadModel } from './services/mnist/loadModel';
+import { HasLoadedModelContext } from './services/HasLoadedModelContext';
 
 function App() {
-    useEffect(() => {loadModel();}, []);
+    const [hasLoadedModel, setHasLoadedModel] = useState(false);
+    useEffect(async () => {
+        await loadModel();
+        setHasLoadedModel(true);
+    }, []);
 
     return (
         <>
@@ -21,8 +26,10 @@ function App() {
                     <title>{appName}</title>
                     <meta name="description" content={description} />
                 </Helmet>
-                <div className="drawing-container">
-                    <DrawingCanvasContainer />
+                <div>
+                    <HasLoadedModelContext.Provider value={hasLoadedModel}>
+                        <DrawingCanvasContainer />
+                    </HasLoadedModelContext.Provider>
                 </div>
             </div>
             <Footer />

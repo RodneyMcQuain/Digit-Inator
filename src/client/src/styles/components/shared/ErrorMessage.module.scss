@@ -1,0 +1,15 @@
+@import '../../utilities/transition-time';
+@import '../../utilities/font-sizes';
+
+.error {
+    display: inline-block;
+    color: #CF6679;
+    font-size: $small-font-size;
+    transform-origin: top;
+    transition: transform $default-transition-time ease-in-out, visibility 0s $default-transition-time;
+
+    &.hide {
+        visibility: hidden;
+        transform: scaleY(0);
+    }
+}

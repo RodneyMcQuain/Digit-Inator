@@ -1,0 +1,22 @@
+@import '.././../utilities/transition-time';
+
+.loading-spinner {
+    display: inline-flex;
+    transform: scale(0);
+    width: 0;
+    transition: width 0s $default-transition-time, transform $default-transition-time ease-in-out;
+    
+    svg { // .icon
+        animation: spin 1s infinite ease-in-out;
+    }
+
+    &.loading {
+        transform: scale(1);
+        width: 100%;
+    }
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
