@@ -12,7 +12,8 @@ interface Point {
     y: number;
 }
 
-const BRUSH_SIZE_PX = 10;
+const BRUSH_SIZE_PX = 20;
+const CANVAS_SIZE_PX = 300;
 
 const DrawingCanvas = ({ canvasRef, strokeColor }: DrawingCanvasProps) => {
     useDrawingCanvas(canvasRef, strokeColor);
@@ -89,14 +90,12 @@ const useDrawingCanvas = (canvasRef: MutableRefObject<HTMLCanvasElement>, stroke
 const setDimensions = (canvas: HTMLCanvasElement) => {
     const viewportWidth = getViewportWidth();
     const viewportHeight = getViewportHeight();
-    const DEFAULT_WIDTH_PX = 300;
-    const DEFAULT_HEIGHT_PX = 400;
 
     const HORIZONTAL_PADDING = 10;
-    const newWidth = Math.min(viewportWidth - (HORIZONTAL_PADDING * 2), DEFAULT_WIDTH_PX);
+    const newWidth = Math.min(viewportWidth - (HORIZONTAL_PADDING * 2), CANVAS_SIZE_PX);
     setCanvasPropertyIfChanged('width', newWidth, canvas);
 
-    const newHeight = Math.min(viewportHeight * 0.75, DEFAULT_HEIGHT_PX);
+    const newHeight = Math.min(viewportHeight * 0.75, CANVAS_SIZE_PX);
     setCanvasPropertyIfChanged('height', newHeight, canvas);
 }
 
