@@ -8,6 +8,7 @@ import styles from '../../styles/components/DetectButton.module.scss';
 import { HasLoadedModelContext } from '../../services/HasLoadedModelContext';
 import ErrorMessage from '../shared/ErrorMessage';
 import LoadingSpinner from '../shared/LoadingSpinner';
+import { detectButtonText } from './detectButtonText';
 
 interface DetectButtonProps {
     canvasRef: MutableRefObject<HTMLCanvasElement>;
@@ -22,7 +23,7 @@ const DetectButton = ({ canvasRef, setPredictions }: DetectButtonProps) => {
             <a className={styles['detect-button-anchor']} href={`#${detectionResult}`} onClick={e => hasntLoadedModel && e.preventDefault()}>
                 <GradientButton onClick={() => { detectButtonHandler(canvasRef.current, setPredictions) }} disabled={hasntLoadedModel}>
                     <>
-                        <IconText icon={<FiBarChart2 />} text="Detect" />{" "}
+                        <IconText icon={<FiBarChart2 />} text={detectButtonText} />{" "}
                         &nbsp;<LoadingSpinner isLoading={hasntLoadedModel} />
                     </>
                 </GradientButton>
