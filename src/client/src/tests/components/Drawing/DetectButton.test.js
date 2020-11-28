@@ -51,7 +51,7 @@ describe('The detect button', () => {
 
     describe('given the model has loaded', () => {
         let setPredictionsMock;
-        const MOCK_IMAGE_DATA = 4;
+        const MOCK_IMAGE_DATA = [200, 200, 200, 255, 0, 0, 0, 0];
         const MOCK_PREDICTIONS = [0.1, 0.2, 0.3, 0.4, 0.5];
 
         beforeEach(() => {
@@ -67,7 +67,7 @@ describe('The detect button', () => {
             });
 
             it('calls function for number detection', () => {
-                expect(detect).toBeCalledWith(MOCK_IMAGE_DATA);
+                expect(detect).toBeCalledWith(expect.objectContaining({ data: [255, 255, 255, 255, 0, 0, 0, 0] }));
             });
 
             it('sets the predictions', () => {
@@ -87,10 +87,10 @@ const renderDetectButton = (canvasRef, setPredictions, hasModelLoaded) => (
     )
 );
 
-const getCanvasRefStub = (imageData = 0) => ({
+const getCanvasRefStub = (imageData = []) => ({
     current: {
         width: 0,
         height: 0,
-        getContext: () => ({ getImageData: () => imageData }),
+        getContext: () => ({ getImageData: () => ({ data: imageData }) }),
     }
 });

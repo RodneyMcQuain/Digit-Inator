@@ -37,8 +37,30 @@ const DetectButton = ({ canvasRef, setPredictions }: DetectButtonProps) => {
 const detectButtonHandler = async (canvas: HTMLCanvasElement, setPredictions: (predictions: number[]) => void) => {
     const ctx: CanvasRenderingContext2D = canvas.getContext('2d') as any;
     const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
-    const predictions = await detect(imageData);
+    const blackAndWhiteImageData = convertImageDataToBlackAndWhite(imageData);
+    const predictions = await detect(blackAndWhiteImageData);
     setPredictions(predictions);
+};
+
+// Mutates the passed in imageData
+const convertImageDataToBlackAndWhite = (imageData: ImageData): ImageData => {
+    const WHITE = 255;
+    const BLACK = 0;
+
+    for (let i = 0; i < imageData.data.length; i += 4) {
+        const redIndex = i;
+        const greenIndex = i+1;
+        const blueIndex = i+2;
+        const alphaIndex = i+3;
+
+        const colorValueResult = imageData.data[alphaIndex] !== 0 ? WHITE : BLACK;
+        imageData.data[redIndex] = colorValueResult;
+        imageData.data[greenIndex] = colorValueResult;
+        imageData.data[blueIndex] = colorValueResult;
+        imageData.data[alphaIndex] = colorValueResult;
+    }
+
+    return imageData;
 };
 
 export default DetectButton;
