@@ -91,6 +91,9 @@ const getCanvasRefStub = (imageData = []) => ({
     current: {
         width: 0,
         height: 0,
-        getContext: () => ({ getImageData: () => ({ data: imageData }) }),
+        getContext: () => ({ 
+            getImageData: () => ({ data: imageData }), 
+            canvas: { width: 0, height: 0 },
+        }),
     }
 });
