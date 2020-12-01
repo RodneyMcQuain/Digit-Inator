@@ -13,18 +13,19 @@ const DrawingCanvasContainer = () => {
     const canvasRef = useRef() as MutableRefObject<HTMLCanvasElement>;
     const [strokeColor, setStrokeColor] = useState<string>(LIGHT_WHITE);
     const [predictions, setPredictions] = useState<number[]>([]);
+    const [hasDrawn, setHasDrawn] = useState(false);
 
     return (
         <div id={detection} className={styles["drawing-canvas-container"]}>
             <h2>Draw a Number!</h2>
             <UsabilityInstructions />
             <br />
-            <DrawingCanvas canvasRef={canvasRef} strokeColor={strokeColor} />
+            <DrawingCanvas canvasRef={canvasRef} strokeColor={strokeColor} setHasDrawn={setHasDrawn} />
             <br />
             <ColorSelectionButton strokeColor={strokeColor} setStrokeColor={setStrokeColor} />
-            <ClearButton canvasRef={canvasRef} />
+            <ClearButton canvasRef={canvasRef} setHasDrawn={setHasDrawn} />
             <br />
-            <DetectButton canvasRef={canvasRef} setPredictions={setPredictions} />
+            <DetectButton canvasRef={canvasRef} setPredictions={setPredictions} hasDrawn={hasDrawn} />
             <br />
             <br />
             <Predictions predictions={predictions} />

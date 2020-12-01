@@ -5,6 +5,7 @@ import styles from '../../styles/components/DrawingCanvas.module.scss';
 interface DrawingCanvasProps {
     canvasRef: MutableRefObject<HTMLCanvasElement>;
     strokeColor: string;
+    setHasDrawn: (hasDrawn: boolean) => void;
 }
 
 interface Point {
@@ -15,13 +16,17 @@ interface Point {
 const BRUSH_SIZE_PX = 20;
 const CANVAS_SIZE_PX = 300;
 
-const DrawingCanvas = ({ canvasRef, strokeColor }: DrawingCanvasProps) => {
-    useDrawingCanvas(canvasRef, strokeColor);
+const DrawingCanvas = ({ canvasRef, strokeColor, setHasDrawn }: DrawingCanvasProps) => {
+    useDrawingCanvas(canvasRef, strokeColor, setHasDrawn);
 
     return <canvas className={styles['drawing-canvas']} ref={canvasRef} />;
 };
 
-const useDrawingCanvas = (canvasRef: MutableRefObject<HTMLCanvasElement>, strokeColor: string) => {
+const useDrawingCanvas = (
+    canvasRef: MutableRefObject<HTMLCanvasElement>,
+    strokeColor: string, 
+    setHasDrawn: (hasDrawn: boolean) => void
+) => {
     const previousX = useRef<number>(0);
     const previousY = useRef<number>(0);
     const isDrawing = useRef<boolean>(false);
@@ -31,7 +36,7 @@ const useDrawingCanvas = (canvasRef: MutableRefObject<HTMLCanvasElement>, stroke
         const setDimensionsLocal = () => setDimensions(canvas);
         setDimensionsLocal();
         const ctx: CanvasRenderingContext2D = canvasRef.current.getContext('2d') as any;
-        const start = (): void => { isDrawing.current = true; };
+        const start = (): void => { isDrawing.current = true; setHasDrawn(true); };
         const stop = (): void => { isDrawing.current = false; };
         const mouseMove = (e: MouseEvent) => {
             const points = {

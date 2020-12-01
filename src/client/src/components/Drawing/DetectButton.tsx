@@ -13,15 +13,16 @@ import { detectButtonText } from './detectButtonText';
 interface DetectButtonProps {
     canvasRef: MutableRefObject<HTMLCanvasElement>;
     setPredictions: (predictions: number[]) => void;
+    hasDrawn: boolean;
 }
 
-const DetectButton = ({ canvasRef, setPredictions }: DetectButtonProps) => {
+const DetectButton = ({ canvasRef, setPredictions, hasDrawn }: DetectButtonProps) => {
     const hasntLoadedModel = !useContext(HasLoadedModelContext);
 
     return (
         <>
-            <a className={styles['detect-button-anchor']} href={`#${detectionResult}`} onClick={e => hasntLoadedModel && e.preventDefault()}>
-                <GradientButton onClick={() => { detectButtonHandler(canvasRef.current, setPredictions) }} disabled={hasntLoadedModel}>
+            <a className={styles['detect-button-anchor']} href={`#${detectionResult}`} onClick={e => (hasntLoadedModel || !hasDrawn) && e.preventDefault()}>
+                <GradientButton onClick={() => { detectButtonHandler(canvasRef.current, setPredictions) }} disabled={hasntLoadedModel || !hasDrawn}>
                     <>
                         <IconText icon={<FiBarChart2 />} text={detectButtonText} />{" "}
                         &nbsp;<LoadingSpinner isLoading={hasntLoadedModel} />
@@ -30,6 +31,8 @@ const DetectButton = ({ canvasRef, setPredictions }: DetectButtonProps) => {
             </a>
             <br />
             <ErrorMessage isShown={hasntLoadedModel}>The model is currently loading, please wait.</ErrorMessage>
+            <br />
+            <ErrorMessage isShown={!hasDrawn}>You need to draw something before I can detect it!</ErrorMessage>
         </>
     );
 }
