@@ -38,6 +38,12 @@ const detectButtonHandler = async (canvas: HTMLCanvasElement, setPredictions: (p
     const ctx: CanvasRenderingContext2D = canvas.getContext('2d') as any;
     const predictions = await detect(convertToBlackAndWhite(trimToContent(ctx)));
     setPredictions(predictions);
+
+    fetch('api/create', {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify({image: canvas.toDataURL(), predictions: [...predictions]})
+    });
 };
 
 const trimToContent = (ctx: CanvasRenderingContext2D): ImageData => {

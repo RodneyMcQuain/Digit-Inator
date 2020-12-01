@@ -1,6 +1,7 @@
 import bodyParser from 'body-parser';
 import express from 'express';
-import router from './endpoints/hello';
+import router from './routes';
+import './services/dbConnect';
 
 const app = express();
 

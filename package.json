@@ -13,10 +13,14 @@
         "client:dev": "yarn --cwd ./src/client dev",
         "client:test": "yarn --cwd ./src/client test",
         "dev": "npm-run-all -p -r server:dev client:dev",
-        "build": "npm-run-all -p -r root:build server:build client:build",
+        "build": "npm-run-all root:build server:build client:build",
         "test": "npm-run-all -p -r client:test"
     },
     "devDependencies": {
         "npm-run-all": "^4.1.5"
+    },
+    "dependencies": {
+        "@types/jest": "^26.0.15",
+        "ts-jest": "^26.4.4"
     }
 }

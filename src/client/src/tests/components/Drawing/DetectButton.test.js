@@ -24,6 +24,8 @@ GradientButton.mockImplementation(buttonFake);
 jest.mock('../../../components/shared/LoadingSpinner');
 LoadingSpinner.mockImplementation(loadingSpinnerFake);
 
+global.fetch = jest.fn();
+
 describe('The detect button', () => {
     it('displays "Detect" as text', () => {
         renderDetectButton(getCanvasRefStub(), jest.fn());
@@ -95,5 +97,6 @@ const getCanvasRefStub = (imageData = []) => ({
             getImageData: () => ({ data: imageData }), 
             canvas: { width: 0, height: 0 },
         }),
+        toDataURL: jest.fn()
     }
 });

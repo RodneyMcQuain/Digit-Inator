@@ -3,6 +3,7 @@ import { detectionResult } from '../../services/anchors';
 import { useAddCssClass } from '../../services/useAddCssClass';
 import Card from '../shared/Card';
 import styles from '../../styles/components/Predictions.module.scss';
+import { getHighestPrediction } from '../../services/highestPrediction';
 
 interface PredictionsProps {
     predictions: number[];
@@ -31,7 +32,5 @@ const Predictions = ({ predictions }: PredictionsProps) => {
         </Card>
     );
 }
-
-const getHighestPrediction = (predictions: number[]): number => predictions.indexOf(Math.max(...predictions));
 
 export default Predictions;

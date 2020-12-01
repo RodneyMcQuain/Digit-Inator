@@ -8,6 +8,7 @@ import { appName, description } from './services/siteMetaData';
 import Footer from './components/Footer';
 import { loadModel } from './services/mnist/loadModel';
 import { HasLoadedModelContext } from './services/HasLoadedModelContext';
+import PredictionsContainer from './components/PreviousDetections'
 
 function App() {
     const [hasLoadedModel, setHasLoadedModel] = useState(false);
@@ -30,6 +31,7 @@ function App() {
                     <HasLoadedModelContext.Provider value={hasLoadedModel}>
                         <DrawingCanvasContainer />
                     </HasLoadedModelContext.Provider>
+                    <PredictionsContainer />
                 </div>
             </div>
             <Footer />

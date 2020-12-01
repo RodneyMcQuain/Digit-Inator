@@ -1,0 +1,27 @@
+@import '../utilities/spacing';
+@import '../utilities/font-sizes.scss';
+
+.images-container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    
+    > * {
+        margin-right: $default-spacing;
+        margin-bottom: $default-spacing;
+    }
+
+    > *:last-child {
+        margin-right: 0;
+    }
+}
+
+.detected-image {
+    max-height: 100rem;
+}
+
+.detection-guess {
+    margin: 0;
+    font-size: $normal-font-size * 1.5;
+}
