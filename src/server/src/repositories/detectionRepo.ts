@@ -6,7 +6,7 @@ async function createEntry(body: Detection) {
     const newDetection = new detection(body);
     await newDetection.save(errLogging);
 
-    scaleDatabase();
+    await scaleDatabase();
 }
 
 async function readLastFiveEntries() {

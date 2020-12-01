@@ -4,7 +4,9 @@
 	"main": "src/index.ts",
 	"license": "MIT",
 	"scripts": {
-		"dev": "nodemon"
+		"dev": "nodemon",
+		"test": "jest",
+		"watch": "jest --watch"
 	},
 	"dependencies": {
 		"@typegoose/typegoose": "7.4.1",
@@ -24,9 +26,8 @@
 		"typescript": "4.0.3"
 	},
 	"devDependencies": {
-		"@shelf/jest-mongodb": "1.2.3",
-		"@types/jasmine": "3.6.1",
-		"jasmine": "3.6.3",
-		"jest-cli": "26.6.3"
+		"@shelf/jest-mongodb": "^1.2.3",
+		"jest-cli": "^26.6.3",
+		"ts-jest": "^26.4.4"
 	}
 }
