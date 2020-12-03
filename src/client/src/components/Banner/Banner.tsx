@@ -46,8 +46,8 @@ const useBannerFade = () => {
 
     useEffect(() => {
         const headerTimer = setTimeout(() => shouldAddHeaderTransition(true), 250);
-        const textTimer = setTimeout(() => shouldAddTextTransition(true), 1500);
-        const goDownIconTimer = setTimeout(() => shouldAddGoDownIconTransition(true), 2750);
+        const textTimer = setTimeout(() => shouldAddTextTransition(true), 750);
+        const goDownIconTimer = setTimeout(() => shouldAddGoDownIconTransition(true), 1250);
 
         return () => {
             clearTimeout(headerTimer);
