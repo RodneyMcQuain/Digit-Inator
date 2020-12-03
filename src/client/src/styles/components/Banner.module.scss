@@ -18,7 +18,7 @@ $banner-header-font-size: 50rem;
 .banner-container {
     margin-top: -25vh;
     padding: 40rem;
-    max-width: 650rem;
+    max-width: $max-container-content-width;
 
     .banner-header {
         font-weight: bold;

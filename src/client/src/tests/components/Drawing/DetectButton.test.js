@@ -25,6 +25,7 @@ jest.mock('../../../components/shared/LoadingSpinner');
 LoadingSpinner.mockImplementation(loadingSpinnerFake);
 
 global.fetch = jest.fn();
+const BASE64_CANVAS_DATA = 'base64data';
 
 describe('The detect button', () => {
     it('displays "Detect" as text', () => {
@@ -34,7 +35,7 @@ describe('The detect button', () => {
 
     describe('given the model is loading', () => {
         beforeEach(() => {
-            renderDetectButton(getCanvasRefStub(), jest.fn(), false);
+            renderDetectButton(getCanvasRefStub(), jest.fn(), jest.fn(), false);
         });
 
         it('shows error message with appropriate text', () => {
@@ -53,13 +54,15 @@ describe('The detect button', () => {
 
     describe('given the model has loaded', () => {
         let setPredictionsMock;
+        let addSessionDetectionMock;
         const MOCK_IMAGE_DATA = [200, 200, 200, 255, 0, 0, 0, 0];
         const MOCK_PREDICTIONS = [0.1, 0.2, 0.3, 0.4, 0.5];
 
         beforeEach(() => {
             setPredictionsMock = jest.fn();
+            addSessionDetectionMock = jest.fn();
             const canvasRefStub = getCanvasRefStub(MOCK_IMAGE_DATA);
-            renderDetectButton(canvasRefStub, setPredictionsMock, true);
+            renderDetectButton(canvasRefStub, setPredictionsMock, addSessionDetectionMock, true);
             detect.mockImplementation(() => MOCK_PREDICTIONS);
         });
 
@@ -75,16 +78,20 @@ describe('The detect button', () => {
             it('sets the predictions', () => {
                 expect(setPredictionsMock).toBeCalledWith(MOCK_PREDICTIONS);
             });
+
+            it('adds the detection', () => {
+                expect(addSessionDetectionMock).toBeCalledWith(expect.objectContaining({ image: BASE64_CANVAS_DATA, predictions: MOCK_PREDICTIONS }));
+            });
         });
     });
 
     afterEach(cleanup);
 });
 
-const renderDetectButton = (canvasRef, setPredictions, hasModelLoaded) => (
+const renderDetectButton = (canvasRef, setPredictions, addSessionDetection, hasModelLoaded) => (
     render(
         <HasLoadedModelContext.Provider value={hasModelLoaded}>
-            <DetectButton canvasRef={canvasRef} setPredictions={setPredictions} />
+            <DetectButton canvasRef={canvasRef} setPredictions={setPredictions} addSessionDetection={addSessionDetection} />
         </HasLoadedModelContext.Provider>
     )
 );
@@ -97,6 +104,6 @@ const getCanvasRefStub = (imageData = []) => ({
             getImageData: () => ({ data: imageData }), 
             canvas: { width: 0, height: 0 },
         }),
-        toDataURL: jest.fn()
+        toDataURL: () => BASE64_CANVAS_DATA,
     }
 });

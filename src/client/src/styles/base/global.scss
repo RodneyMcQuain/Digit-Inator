@@ -26,6 +26,14 @@ h2 {
     font-size: 28rem;
 }
 
+h3 {
+    font-size: 24rem;
+}
+
+h3, h4, h5, h6 {
+    font-weight: normal;
+}
+
 h1, h2, h3, h4, h5, h6 {
     font-family: "Monsterrat", Verdana, Geneva, Tahoma, sans-serif;
     margin: 0;
@@ -39,4 +47,12 @@ p, div, span, button, a, li, label {
 
 .cursor-pointer {
     cursor: pointer;
+}
+
+.container {
+    max-width: $max-container-content-width;
+}
+
+.major-top-margin {
+    margin-top: 50rem;
 }

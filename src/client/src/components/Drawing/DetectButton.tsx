@@ -9,19 +9,21 @@ import { HasLoadedModelContext } from '../../services/HasLoadedModelContext';
 import ErrorMessage from '../shared/ErrorMessage';
 import LoadingSpinner from '../shared/LoadingSpinner';
 import { detectButtonText } from './detectButtonText';
+import { Detection } from '../../types/Detection';
 
 interface DetectButtonProps {
     canvasRef: MutableRefObject<HTMLCanvasElement>;
     setPredictions: (predictions: number[]) => void;
+    addSessionDetection: (detection: Detection) => void;
 }
 
-const DetectButton = ({ canvasRef, setPredictions }: DetectButtonProps) => {
+const DetectButton = ({ canvasRef, setPredictions, addSessionDetection }: DetectButtonProps) => {
     const hasntLoadedModel = !useContext(HasLoadedModelContext);
 
     return (
         <>
             <a className={styles['detect-button-anchor']} href={`#${detectionResult}`} onClick={e => hasntLoadedModel && e.preventDefault()}>
-                <GradientButton onClick={() => { detectButtonHandler(canvasRef.current, setPredictions) }} disabled={hasntLoadedModel}>
+                <GradientButton onClick={() => { detectButtonHandler(canvasRef.current, setPredictions, addSessionDetection) }} disabled={hasntLoadedModel}>
                     <>
                         <IconText icon={<FiBarChart2 />} text={detectButtonText} />{" "}
                         &nbsp;<LoadingSpinner isLoading={hasntLoadedModel} />
@@ -34,15 +36,21 @@ const DetectButton = ({ canvasRef, setPredictions }: DetectButtonProps) => {
     );
 }
 
-const detectButtonHandler = async (canvas: HTMLCanvasElement, setPredictions: (predictions: number[]) => void) => {
+const detectButtonHandler = async (
+    canvas: HTMLCanvasElement,
+    setPredictions: (predictions: number[]) => void,
+    addSessionDetection: (detection: Detection) => void
+) => {
     const ctx: CanvasRenderingContext2D = canvas.getContext('2d') as any;
     const predictions = await detect(convertToBlackAndWhite(trimToContent(ctx)));
     setPredictions(predictions);
 
+    const detection = { image: canvas.toDataURL(), predictions: [...predictions] };
+    addSessionDetection(detection);
     fetch('api/create', {
         method: 'POST',
-        headers: {'Content-Type': 'application/json'},
-        body: JSON.stringify({image: canvas.toDataURL(), predictions: [...predictions]})
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(detection),
     });
 };
 

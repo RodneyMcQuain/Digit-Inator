@@ -12,9 +12,11 @@ import PredictionsContainer from './components/PreviousDetections'
 
 function App() {
     const [hasLoadedModel, setHasLoadedModel] = useState(false);
-    useEffect(async () => {
-        await loadModel();
-        setHasLoadedModel(true);
+    useEffect(() => {
+        (async () => {
+            await loadModel();
+            setHasLoadedModel(true);
+        })();
     }, []);
 
     return (
