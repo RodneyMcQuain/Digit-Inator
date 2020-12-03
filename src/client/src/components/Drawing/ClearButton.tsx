@@ -13,6 +13,6 @@ const ClearButton = ({ canvasRef }: ClearButtonProps) => (
     </PrimaryButton>
 );
 
-const clearCanvas = (canvas: HTMLCanvasElement): void => { canvas.width = canvas.width; };
+const clearCanvas = (canvas: HTMLCanvasElement): void => { canvas.getContext('2d')?.clearRect(0, 0, canvas.width, canvas.height) };
 
 export default ClearButton;
