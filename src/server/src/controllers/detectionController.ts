@@ -1,9 +1,9 @@
 import { Request, Response } from 'express';
+import { Detection } from '../models/detectionModel';
 import { createEntry, readLastFiveEntries } from '../repositories/detectionRepo';
 
 const create = async (req: Request, res: Response) => {
-    req.body.dateCreated = new Date();
-    createEntry(req.body).then(() => {
+    createEntry(new Detection(req.body)).then(() => {
         res.sendStatus(201);
     }).catch(err => {
         console.log(err);

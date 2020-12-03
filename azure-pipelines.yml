@@ -1,0 +1,53 @@
+# Node.js with React
+# Build a Node.js project that uses React.
+# Add steps that analyze code, save build artifacts, deploy, and more:
+# https://docs.microsoft.com/azure/devops/pipelines/languages/javascript
+
+trigger:
+- master
+
+pool:
+  vmImage: 'ubuntu-latest'
+
+steps:
+- task: NodeTool@0
+  inputs:
+    versionSpec: '12.x'
+  displayName: 'Install Node.js'
+
+- script: |
+    yarn
+    yarn build
+  displayName: 'yarn install and build'
+
+- script: |
+    touch .env
+    echo "HOST=digitinator.azurewebsites.net" >> .env
+    echo "PORT=3000" >> .env
+    echo "SERVER_PORT=8080" >> .env
+    echo "MONGO_URL=mongodb://localhost:27017/Detections" >> .env
+  displayName: 'setup environment'
+
+- script: |
+    yarn test
+  displayName: 'Test'
+
+# - task: ArchiveFiles@2
+#   inputs:
+#     rootFolderOrFile: '$(System.DefaultWorkingDirectory)'
+#     includeRootFolder: true
+#     archiveType: 'zip'
+#     archiveFile: '$(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip'
+#     replaceExistingArchive: true
+
+# - task: CopyFiles@2
+#   inputs:
+#     SourceFolder: '$(Build.ArtifactStagingDirectory)'
+#     Contents: '$(Build.BuildId).zip'
+#     TargetFolder: '$(Build.ArtifactStagingDirectory)\ArtifactsToBePublished'
+
+# - task: PublishPipelineArtifact@1
+#   inputs:
+#     targetPath: '$(Build.ArtifactStagingDirectory)\ArtifactsToBePublished'
+#     artifact: 'drop'
+#     publishLocation: 'pipeline'

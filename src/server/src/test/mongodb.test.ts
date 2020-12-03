@@ -7,6 +7,7 @@ describe('Mongoose', () => {
     beforeAll(() => {
         connection = mongoose.connect(process.env.MONGO_URL!, {
             useNewUrlParser: true,
+            useUnifiedTopology: true
         });
     });
     
@@ -15,22 +16,22 @@ describe('Mongoose', () => {
     });
     
     it('Saves to database and returns', async () => {
-        const mockEntry = {image: "asdf", predictions: [{"1": 0}, {"2": 0.1}]};
+        const mockEntry = {image: "asdf", predictions: [0, 0.1], dateCreated: new Date(1998, 11)};
  
         await createEntry(mockEntry);
-        const {image, predictions} = ((await readLastFiveEntries())[0]);
+        const {image, predictions, dateCreated} = (await readLastFiveEntries())[0];
         
-        expect({image, predictions}).toEqual(mockEntry);
+        expect({image, predictions, dateCreated}).toEqual(mockEntry);
     });
     
     it('Only returns 5 values', async () => {
         const mockEntries = [
-                                {image: "1", predictions: [{"1": 0}, {"2": 0.1}], dateCreated: new Date(2019, 1)},
-                                {image: "2", predictions: [{"1": 0}, {"2": 0.1}], dateCreated: new Date(2019, 2)},
-                                {image: "3", predictions: [{"1": 0}, {"2": 0.1}], dateCreated: new Date(2019, 3)},
-                                {image: "4", predictions: [{"1": 0}, {"2": 0.1}], dateCreated: new Date(2019, 4)},
-                                {image: "5", predictions: [{"1": 0}, {"2": 0.1}], dateCreated: new Date(2019, 5)},
-                                {image: "6", predictions: [{"1": 0}, {"2": 0.1}], dateCreated: new Date(2019, 6)},
+                                {image: "1", predictions: [0, 0.1], dateCreated: new Date(2019, 1)},
+                                {image: "2", predictions: [0, 0.1], dateCreated: new Date(2019, 2)},
+                                {image: "3", predictions: [0, 0.1], dateCreated: new Date(2019, 3)},
+                                {image: "4", predictions: [0, 0.1], dateCreated: new Date(2019, 4)},
+                                {image: "5", predictions: [0, 0.1], dateCreated: new Date(2019, 5)},
+                                {image: "6", predictions: [0, 0.1], dateCreated: new Date(2019, 6)},
                             ];
 
         for (const mockEntry of mockEntries) await createEntry(mockEntry); 

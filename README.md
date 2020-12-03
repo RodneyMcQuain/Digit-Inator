@@ -8,8 +8,9 @@
 5. Run `yarn build` at the root of the project to install dependencies.
 
 ## Run the Application Locally
-1. Development mode: Run `yarn dev` at the root of the project to start the server and client
-2. Navigate to `http://localhost:3000/`
+1. Create .env file under root that follows the .env_example file.
+2. Development mode: Run `yarn dev` at the root of the project to start the server and client
+3. Navigate to `http://HOST:PORT/` where HOST and PORT reflect the entries in the .env file.
 
 ## Run Tests
 1. Run `yarn test` at the root of the project

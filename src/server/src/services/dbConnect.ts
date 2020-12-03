@@ -1,7 +1,11 @@
 import { mongoose } from '@typegoose/typegoose';
+import dotenv from 'dotenv';
+dotenv.config({path: '../../.env'});
+
+const MONGO_URL = process.env.MONGO_URL || 'mongodb://localhost:27017/Detections';
 
 export async function run() {
-    mongoose.connect('mongodb://localhost:27017/Detections', {
+    mongoose.connect(MONGO_URL, {
         useCreateIndex: true,
         useNewUrlParser: true,
         useUnifiedTopology: true

@@ -2,14 +2,15 @@ import bodyParser from 'body-parser';
 import express from 'express';
 import router from './routes';
 import './services/dbConnect';
+import dotenv from 'dotenv';
+dotenv.config({path: '../../.env'});
 
 const app = express();
+const port = process.env.SERVER_PORT || 8080;
 
-// Middleware
 app.use(express.static("../client/public"));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use('/api', router);
 
-const PORT = 8080;
-app.listen(PORT, () => console.log(`Server started on port ${PORT}`));
+app.listen(port, () => console.log(`Server started on port: ${port}`));

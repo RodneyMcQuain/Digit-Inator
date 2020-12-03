@@ -1,22 +1,22 @@
 import { getModelForClass, prop  } from '@typegoose/typegoose';
 
 const required = { required: true };
-const notRequired = { required: false };
 
 class Detection {
 
-    constructor() {
-        this.image = '';
-        this.predictions = [];
+    constructor(body: any) {
+        this.image = body.image;
+        this.predictions = body.predictions;
+        this.dateCreated = new Date();
     }
 
     @prop(required)
     public image!: string;
 
-    @prop(required)
-    public predictions!: Object;
+    @prop({type: [Number]})
+    public predictions!: number[];
 
-    @prop(notRequired)
+    @prop(required)
     public dateCreated?: Date;
 }
 

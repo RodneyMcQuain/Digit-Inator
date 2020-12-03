@@ -21,10 +21,11 @@
 	"devDependencies": {
 		"@testing-library/jest-dom": "^4.2.4",
 		"@testing-library/react": "^9.3.2",
-		"@testing-library/user-event": "^7.1.2"
+		"@testing-library/user-event": "^7.1.2",
+		"env-cmd": "^10.1.0"
 	},
 	"scripts": {
-		"dev": "react-scripts start",
+		"dev": "env-cmd -f ../../.env react-scripts start",
 		"build": "react-scripts build",
 		"test": "react-scripts test --watchAll=false",
 		"watch": "react-scripts test",

@@ -6,22 +6,23 @@
     "author": "Rodney McQuain <rodneymcquain95@gmail.com>",
     "license": "MIT",
     "scripts": {
-        "server:build": "yarn --cwd ./src/server",
-        "client:build": "yarn --cwd ./src/client",
-        "root:build": "yarn",
-        "server:dev": "yarn --cwd ./src/server dev",
-        "client:dev": "yarn --cwd ./src/client dev",
-        "client:test": "yarn --cwd ./src/client test",
-        "server:test": "yarn --cwd ./src/server test",
-        "dev": "npm-run-all -p -r server:dev client:dev",
-        "build": "npm-run-all root:build server:build client:build",
-        "test": "npm-run-all client:test server:test"
+        "build:server": "yarn --cwd ./src/server",
+        "build:client": "yarn --cwd ./src/client",
+        "build:root": "yarn",
+        "dev:server": "yarn --cwd ./src/server dev",
+        "dev:client": "yarn --cwd ./src/client dev",
+        "test:client": "yarn --cwd ./src/client test",
+        "test:server": "yarn --cwd ./src/server test",
+        "dev": "npm-run-all -p -r dev:*",
+        "build": "npm-run-all build:*",
+        "test": "npm-run-all test:*"
     },
     "devDependencies": {
         "npm-run-all": "^4.1.5"
     },
     "dependencies": {
         "@types/jest": "^26.0.15",
+        "dotenv": "^8.2.0",
         "ts-jest": "^26.4.4"
     }
 }

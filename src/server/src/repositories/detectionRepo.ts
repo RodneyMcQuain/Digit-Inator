@@ -9,9 +9,9 @@ async function createEntry(body: Detection) {
     await scaleDatabase();
 }
 
-async function readLastFiveEntries() {
-    const detects = await detection.find(errLogging).sort({dateCreated: -1});
-    return detects.map(detect => detect).filter((_, index) => index < 5);
+async function readLastFiveEntries(): Promise<Detection[]> {
+    const detects = await detection.find(errLogging).sort({dateCreated: -1}).lean();
+    return detects.filter((_, index) => index < 5);
 }
 
 async function deleteOldestEntry() {
