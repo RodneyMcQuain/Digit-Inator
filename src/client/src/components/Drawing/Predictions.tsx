@@ -4,6 +4,7 @@ import { useAddCssClass } from '../../services/useAddCssClass';
 import Card from '../shared/Card';
 import styles from '../../styles/components/Drawing/Predictions.module.scss';
 import { getHighestPrediction } from '../../services/highestPrediction';
+import PredictionsGraph from './PredictionsGraph';
 
 interface PredictionsProps {
     predictions: number[];
@@ -29,6 +30,7 @@ const Predictions = ({ predictions }: PredictionsProps) => {
             >
                 {delayedPrediction}
             </div>
+            <PredictionsGraph predictions={predictions} />
         </Card>
     );
 }
