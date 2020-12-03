@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from '../../styles/components/Card.module.scss';
+import styles from '../../styles/components/shared/Card.module.scss';
 
 interface CardProps {
     children: JSX.Element | JSX.Element[];

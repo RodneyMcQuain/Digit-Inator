@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, MutableRefObject } from 'react';
 import { getViewportWidth, getViewportHeight } from '../../services/dimensions';
-import styles from '../../styles/components/DrawingCanvas.module.scss';
+import styles from '../../styles/components/Drawing/DrawingCanvas.module.scss';
 
 interface DrawingCanvasProps {
     canvasRef: MutableRefObject<HTMLCanvasElement>;

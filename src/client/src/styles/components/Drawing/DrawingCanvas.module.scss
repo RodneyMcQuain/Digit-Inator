@@ -1,0 +1,11 @@
+@import '../../utilities/colors';
+@import '../../utilities/layered-box-shadow';
+@import '../../utilities/border-radius';
+
+.drawing-canvas {
+    background: $light-black;
+    border-radius: $minor-border-radius;
+    cursor: url(../../../assets/pencil.svg) 0 25, auto;
+    box-shadow: get-layered-box-shadow();
+    touch-action: none;
+}

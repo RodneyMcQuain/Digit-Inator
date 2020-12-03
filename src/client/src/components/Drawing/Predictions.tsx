@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { detectionResult } from '../../services/anchors';
 import { useAddCssClass } from '../../services/useAddCssClass';
 import Card from '../shared/Card';
-import styles from '../../styles/components/Predictions.module.scss';
+import styles from '../../styles/components/Drawing/Predictions.module.scss';
 import { getHighestPrediction } from '../../services/highestPrediction';
 
 interface PredictionsProps {

@@ -1,6 +1,6 @@
 import React from 'react';
 import Button from './Button';
-import styles from '../../../styles/components/GradientButton.module.scss';
+import styles from '../../../styles/components/shared/buttons/GradientButton.module.scss';
 
 interface GradientButtonProps {
     children: JSX.Element | JSX.Element[];

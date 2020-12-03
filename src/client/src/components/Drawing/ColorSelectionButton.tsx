@@ -1,6 +1,6 @@
 import React, { MutableRefObject, useRef } from 'react';
 import SecondaryButton from '../shared/buttons/SecondaryButton';
-import styles from '../../styles/components/ColorSelectionButton.module.scss';
+import styles from '../../styles/components/Drawing/ColorSelectionButton.module.scss';
 
 interface ColorSelectionButtonProps {
     strokeColor: string;

@@ -1,5 +1,5 @@
 import React, { MutableRefObject, useRef, useState } from 'react';
-import styles from '../../styles/components/DrawingCanvasContainer.module.scss';
+import styles from '../../styles/components/Drawing/DrawingCanvasContainer.module.scss';
 import ClearButton from './ClearButton';
 import DrawingCanvas from './DrawingCanvas';
 import { LIGHT_WHITE } from '../../styles/utilities/colors.scss';
