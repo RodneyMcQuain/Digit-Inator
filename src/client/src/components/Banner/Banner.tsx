@@ -54,7 +54,7 @@ const useBannerFade = () => {
             clearTimeout(textTimer);
             clearTimeout(goDownIconTimer);
         };
-    }, []);
+    }, [shouldAddGoDownIconTransition, shouldAddHeaderTransition, shouldAddTextTransition]);
 
     return [mightBeHeaderTransition, mightBeTextTransition, mightBeGoDownIconTransition];
 };
