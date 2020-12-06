@@ -9,7 +9,7 @@ interface DetectionCardsProps {
 
 const DetectionCards = ({ detections }: DetectionCardsProps) => (
     <div className={`container ${styles['detections-container']}`}>
-        {detections.reverse().map(detection => <DetectionCard key={detection.id} detection={detection} />)}
+        {[...detections].reverse().map(detection => <DetectionCard key={detection.id} detection={detection} />)}
     </div>
 );
 
