@@ -34,7 +34,7 @@ steps:
 
   - script: |
     yarn stage
-  displayName: 'Test'
+  displayName: 'Stage'
 
 - task: ArchiveFiles@2
   inputs:
