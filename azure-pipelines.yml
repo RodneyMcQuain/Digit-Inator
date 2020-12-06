@@ -32,6 +32,10 @@ steps:
     yarn test
   displayName: 'Test'
 
+  - script: |
+    yarn stage
+  displayName: 'Test'
+
 - task: ArchiveFiles@2
   inputs:
     rootFolderOrFile: '$(System.DefaultWorkingDirectory)'

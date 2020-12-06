@@ -5,6 +5,8 @@
 	"license": "MIT",
 	"scripts": {
 		"dev": "nodemon",
+		"build": "yarn run tsc",
+		"prod": "node dist/index.js",
 		"test": "jest",
 		"watch": "jest --watch"
 	},
