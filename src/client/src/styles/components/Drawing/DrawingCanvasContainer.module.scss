@@ -1,4 +1,5 @@
-@import '../../utilities/spacing';
+@import "../../utilities/spacing";
+@import "../../utilities/breakpoints";
 
 .drawing-canvas-container button {
     margin-top: $default-spacing;
@@ -10,4 +11,24 @@
 
 .drawing-canvas-container {
     padding: $major-spacing 0;
+}
+
+.drawing-canvas-and-predictions-container {
+    display: inline-flex;
+    flex-direction: row;
+    justify-content: center;
+
+    > *:first-child {
+        margin-right: $default-spacing;
+    }
+}
+
+@mixin md-media-query {
+    .drawing-canvas-and-predictions-container {
+        flex-direction: column;
+
+        > *:first-child {
+            margin-right: 0;
+        }
+    }
 }

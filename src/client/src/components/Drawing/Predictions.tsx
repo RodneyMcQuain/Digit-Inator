@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import { detectionResult } from '../../services/anchors';
 import { useAddCssClass } from '../../services/useAddCssClass';
 import Card from '../shared/Card';
 import styles from '../../styles/components/Drawing/Predictions.module.scss';
@@ -19,10 +18,7 @@ const Predictions = ({ predictions }: PredictionsProps) => {
     }, [predictions]);
 
     return (
-        <Card
-            id={detectionResult}
-            className={`${styles['prediction-container']} ${predictions.length > 0 ? styles.appear : ''}`}
-        >
+        <Card className={`${styles['prediction-container']} ${predictions.length > 0 ? styles.appear : ''}`}>
             <span>I think your number is</span>
             <div
                 className={`${styles.prediction} ${mightPopInPrediction}`}
