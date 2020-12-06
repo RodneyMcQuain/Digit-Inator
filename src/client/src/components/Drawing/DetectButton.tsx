@@ -3,8 +3,6 @@ import detect from '../../services/mnist/numberDetection';
 import GradientButton from '../shared/buttons/GradientButton';
 import IconText from '../shared/IconText';
 import { FiBarChart2 } from 'react-icons/fi';
-import { detectionResult } from '../../services/anchors';
-import styles from '../../styles/components/Drawing/DetectButton.module.scss';
 import { HasLoadedModelContext } from '../../services/HasLoadedModelContext';
 import ErrorMessage from '../shared/ErrorMessage';
 import LoadingSpinner from '../shared/LoadingSpinner';
@@ -22,14 +20,12 @@ const DetectButton = ({ canvasRef, setPredictions, addSessionDetection }: Detect
 
     return (
         <>
-            <a className={styles['detect-button-anchor']} href={`#${detectionResult}`} onClick={e => hasntLoadedModel && e.preventDefault()}>
-                <GradientButton onClick={() => { detectButtonHandler(canvasRef.current, setPredictions, addSessionDetection) }} disabled={hasntLoadedModel}>
-                    <>
-                        <IconText icon={<FiBarChart2 />} text={detectButtonText} />{" "}
-                        &nbsp;<LoadingSpinner isLoading={hasntLoadedModel} />
-                    </>
-                </GradientButton>
-            </a>
+            <GradientButton onClick={() => { detectButtonHandler(canvasRef.current, setPredictions, addSessionDetection) }} disabled={hasntLoadedModel}>
+                <>
+                    <IconText icon={<FiBarChart2 />} text={detectButtonText} />{" "}
+                    &nbsp;<LoadingSpinner isLoading={hasntLoadedModel} />
+                </>
+            </GradientButton>
             <br />
             <ErrorMessage isShown={hasntLoadedModel}>The model is currently loading, please wait.</ErrorMessage>
         </>

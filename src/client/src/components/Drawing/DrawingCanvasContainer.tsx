@@ -23,15 +23,17 @@ const DrawingCanvasContainer = () => {
             <h2>Draw a Number!</h2>
             <UsabilityInstructions />
             <br />
-            <DrawingCanvas canvasRef={canvasRef} strokeColor={strokeColor} />
-            <br />
-            <ColorSelectionButton strokeColor={strokeColor} setStrokeColor={setStrokeColor} />
-            <ClearButton canvasRef={canvasRef} />
-            <br />
-            <DetectButton canvasRef={canvasRef} setPredictions={setPredictions} addSessionDetection={addSessionDetection} />
-            <br />
-            <br />
-            <Predictions predictions={predictions} />
+            <div className={styles["drawing-canvas-and-predictions-container"]}>
+                <div>
+                    <DrawingCanvas canvasRef={canvasRef} strokeColor={strokeColor} />
+                    <br />
+                    <ColorSelectionButton strokeColor={strokeColor} setStrokeColor={setStrokeColor} />
+                    <ClearButton canvasRef={canvasRef} />
+                    <br />
+                    <DetectButton canvasRef={canvasRef} setPredictions={setPredictions} addSessionDetection={addSessionDetection} />
+                </div>
+                <Predictions predictions={predictions} />
+            </div>
             <br />
             <br />
             <SessionDetections detections={sessionDetections} />

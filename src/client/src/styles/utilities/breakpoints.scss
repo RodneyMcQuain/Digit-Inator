@@ -1,11 +1,35 @@
-$sm-breakpoint: 576rem;
-$md-breakpoint: 768rem;
-$lg-breakpoint: 992rem;
-$xl-breakpoint: 1200rem;
+$sm-breakpoint: 576px;
+$md-breakpoint: 768px;
+$lg-breakpoint: 992px;
+$xl-breakpoint: 1200px;
 
 :export {
     SM_BREAKPOINT: $sm-breakpoint;
     MD_BREAKPOINT: $md-breakpoint;
     LG_BREAKPOINT: $lg-breakpoint;
     XL_BREAKPOINT: $xl-breakpoint
+}
+
+@mixin sm-media-query() {
+    @media (max-width: $sm-breakpoint - 1) {
+        @content;
+    }
+}
+
+@mixin md-media-query() {
+    @media (max-width: $md-breakpoint - 1) {
+        @content;
+    }
+}
+
+@mixin lg-media-query() {
+    @media (max-width: $lg-breakpoint - 1) {
+        @content;
+    }
+}
+
+@mixin xl-media-query() {
+    @media (max-width: $xl-breakpoint - 1) {
+        @content;
+    }
 }

@@ -18,11 +18,9 @@
 }
 
 .prediction-container {
-    transform: scaleY(0);
-    transition: transform $default-transition-time;
-    transform-origin: top;
+    display: none;
 
     &.appear {
-        transform: scaleY(1);
+        display: inline-block;
     }
 }
