@@ -32,7 +32,7 @@ steps:
     yarn test
   displayName: 'Test'
 
-  - script: |
+- script: |
     yarn stage
   displayName: 'Stage'
 
