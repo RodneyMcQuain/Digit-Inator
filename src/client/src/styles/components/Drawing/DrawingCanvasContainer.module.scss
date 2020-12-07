@@ -23,7 +23,7 @@
     }
 }
 
-@mixin md-media-query {
+@include md-media-query() {
     .drawing-canvas-and-predictions-container {
         flex-direction: column;
 
