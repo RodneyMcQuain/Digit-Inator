@@ -43,11 +43,6 @@ const detectButtonHandler = async (
 
     const detection = { image: canvas.toDataURL(), predictions: [...predictions] };
     addSessionDetection(detection);
-    fetch('api/create', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(detection),
-    });
 };
 
 const trimToContent = (ctx: CanvasRenderingContext2D): ImageData => {

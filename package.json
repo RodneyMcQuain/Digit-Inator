@@ -1,28 +1,48 @@
 {
-    "name": "Digit-Inator-Root",
-    "version": "1.0.0",
-    "main": "index.ts",
-    "repository": "https://CS360@dev.azure.com/CS360/CS372-Fall-2020-Semester-Project/_git/CS372-Fall-2020-Semester-Project",
-    "author": "Rodney McQuain <rodneymcquain95@gmail.com>",
-    "license": "MIT",
-    "scripts": {
-        "build:server": "yarn --cwd ./src/server",
-        "build:client": "yarn --cwd ./src/client",
-        "build:root": "yarn",
-        "dev:server": "yarn --cwd ./src/server dev",
-        "dev:client": "yarn --cwd ./src/client dev",
-        "test:client": "yarn --cwd ./src/client test",
-        "test:server": "yarn --cwd ./src/server test",
-        "dev": "npm-run-all -p -r dev:*",
-        "build": "npm-run-all build:*",
-        "test": "npm-run-all test:*"
-    },
-    "devDependencies": {
-        "npm-run-all": "^4.1.5"
-    },
-    "dependencies": {
-        "@types/jest": "^26.0.15",
-        "dotenv": "^8.2.0",
-        "ts-jest": "^26.4.4"
-    }
+	"name": "cs372",
+	"version": "0.1.0",
+	"private": true,
+	"proxy": "http://localhost:3000",
+	"dependencies": {
+		"@tensorflow/tfjs": "^2.6.0",
+		"@types/node": "^14.6.4",
+		"@types/react": "^16.9.49",
+		"@types/react-dom": "^16.9.8",
+		"@types/react-vis": "^1.11.5",
+		"@types/uuid": "^8.3.0",
+		"node-sass": "^4.14.1",
+		"react": "^16.13.1",
+		"react-dom": "^16.13.1",
+		"react-helmet": "^6.1.0",
+		"react-icons": "^3.11.0",
+		"react-scripts": "3.4.3",
+		"react-vis": "^1.11.7",
+		"typescript": "^3.9.7",
+		"uuid": "^8.3.1"
+	},
+	"devDependencies": {
+		"@testing-library/jest-dom": "^4.2.4",
+		"@testing-library/react": "^9.3.2",
+		"@testing-library/user-event": "^7.1.2",
+		"env-cmd": "^10.1.0"
+	},
+	"scripts": {
+		"dev": "react-scripts start",
+		"build": "react-scripts build",
+		"test": "react-scripts test --watchAll=false",
+		"test:watch": "react-scripts test",
+		"eject": "react-scripts eject"
+	},
+	"browserslist": {
+		"production": [
+			">0.2%",
+			"not dead",
+			"not op_mini all"
+		],
+		"development": [
+			"last 1 chrome version",
+			"last 1 firefox version",
+			"last 1 safari version"
+		]
+	}
 }
