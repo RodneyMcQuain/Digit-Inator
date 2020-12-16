@@ -1,4 +1,4 @@
-# CS372 Course Project
+# Digit-Inator
 
 ## Installation
 1. Install [npm](https://www.npmjs.com/get-npm)
