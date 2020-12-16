@@ -24,7 +24,6 @@ GradientButton.mockImplementation(buttonFake);
 jest.mock('../../../components/shared/LoadingSpinner');
 LoadingSpinner.mockImplementation(loadingSpinnerFake);
 
-global.fetch = jest.fn();
 const BASE64_CANVAS_DATA = 'base64data';
 
 describe('The detect button', () => {

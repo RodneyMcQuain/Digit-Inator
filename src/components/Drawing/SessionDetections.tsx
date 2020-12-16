@@ -10,7 +10,7 @@ const SessionDetections = ({ detections }: SessionDetectionsProps) => (
     detections.length > 0
         ? (
             <>
-                <h3>Your Detections</h3>
+                <h3>Detections</h3>
                 <DetectionCards detections={detections} />
             </>
         )
