@@ -2,7 +2,7 @@ import React, { MutableRefObject, useRef, useState } from 'react';
 import styles from '../../styles/components/Drawing/DrawingCanvasContainer.module.scss';
 import ClearButton from './ClearButton';
 import DrawingCanvas from './DrawingCanvas';
-import { LIGHT_WHITE } from '../../styles/utilities/colors.scss';
+import { LIGHT_WHITE } from '../../styles/utilities/colors.module.scss';
 import ColorSelectionButton from './ColorSelectionButton';
 import DetectButton from './DetectButton';
 import { detection } from '../../services/anchors';

@@ -2,7 +2,6 @@
 	"name": "cs372",
 	"version": "0.1.0",
 	"private": true,
-	"proxy": "http://localhost:3000",
 	"dependencies": {
 		"@tensorflow/tfjs": "^2.6.0",
 		"@types/node": "^14.6.4",
@@ -10,13 +9,14 @@
 		"@types/react-dom": "^16.9.8",
 		"@types/react-vis": "^1.11.5",
 		"@types/uuid": "^8.3.0",
-		"node-sass": "^4.14.1",
+		"next": "^10.0.3",
 		"react": "^16.13.1",
 		"react-dom": "^16.13.1",
 		"react-helmet": "^6.1.0",
 		"react-icons": "^3.11.0",
 		"react-scripts": "3.4.3",
 		"react-vis": "^1.11.7",
+		"sass": "^1.30.0",
 		"typescript": "^3.9.7",
 		"uuid": "^8.3.1"
 	},
@@ -27,11 +27,11 @@
 		"env-cmd": "^10.1.0"
 	},
 	"scripts": {
-		"dev": "react-scripts start",
-		"build": "react-scripts build",
+		"dev": "next dev",
+		"build": "next build",
+		"start": "next start",
 		"test": "react-scripts test --watchAll=false",
-		"test:watch": "react-scripts test",
-		"eject": "react-scripts eject"
+		"test:watch": "react-scripts test"
 	},
 	"browserslist": {
 		"production": [

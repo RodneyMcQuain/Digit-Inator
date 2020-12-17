@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { getViewportWidth } from '../../services/dimensions';
-import { LIGHT_WHITE, SECONDARY_ACCENT } from '../../styles/utilities/colors.scss';
+import { LIGHT_WHITE, SECONDARY_ACCENT } from '../../styles/utilities/colors.module.scss';
 import { XYPlot, XAxis, YAxis, HorizontalGridLines, VerticalGridLines, VerticalBarSeries } from 'react-vis';
 
 interface PredictionsGraphProps {
@@ -16,9 +16,10 @@ const AXIS_STYLE = {
 const getGraphSize = (): number => getViewportWidth() < 400 ? (getViewportWidth() - 50) : 300;
 
 const PredictionsGraph = ({ predictions }: PredictionsGraphProps) => {
-    const [graphSize, setGraphSize] = useState<number>(getGraphSize());
+    const [graphSize, setGraphSize] = useState<number>(0);
     useEffect(() => {
         const updateGraphSize = () => setGraphSize(getGraphSize());
+        updateGraphSize();
         window.addEventListener('resize', updateGraphSize);
         return () => window.removeEventListener('resize', updateGraphSize);
     });
