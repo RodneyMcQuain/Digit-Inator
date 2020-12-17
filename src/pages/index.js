@@ -1,13 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { Helmet } from 'react-helmet';
-import './styles/base/global.scss';
-import styles from './styles/components/App.module.scss';
-import DrawingCanvasContainer from './components/Drawing/DrawingCanvasContainer';
-import Banner from './components/Banner/Banner';
-import { appName, description } from './services/siteMetaData';
-import Footer from './components/Footer';
-import { loadModel } from './services/mnist/loadModel';
-import { HasLoadedModelContext } from './services/HasLoadedModelContext';
+import styles from '../styles/components/App.module.scss';
+import DrawingCanvasContainer from '../components/Drawing/DrawingCanvasContainer';
+import Banner from '../components/Banner/Banner';
+import { appName, description } from '../services/siteMetaData';
+import Footer from '../components/Footer';
+import { loadModel } from '../services/mnist/loadModel';
+import { HasLoadedModelContext } from '../services/HasLoadedModelContext';
 
 function App() {
     const [hasLoadedModel, setHasLoadedModel] = useState(false);
