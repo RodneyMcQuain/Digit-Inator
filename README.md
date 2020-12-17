@@ -4,7 +4,8 @@ The Digit-Inator allows you to convert your favorite hand drawn digit to text wi
 ## Installation
 1. Install [npm](https://www.npmjs.com/get-npm)
 2. Install [yarn](https://classic.yarnpkg.com/en/docs/install/#windows-stable) 
-3. Run `yarn` at the root of the project to install root dependencies.
+3. Run `yarn` at the root of the project to install root dependencies
+4. Optionally, install [AdobeXD](https://www.adobe.com/products/xd.html) if you want to more easily edit the logo
 
 ## Run the Application Locally
 1. Run `yarn dev` at the root of the project to start the application
