@@ -26,6 +26,7 @@ function App() {
                     <meta charSet="utf-8" />
                     <title>{appName}</title>
                     <meta name="description" content={description} />
+                    <meta name="google-site-verification" content="dj-D43w2pDDNhcyR76vVp9NNR6T-yOUKuRZ5FJ-3Pog" />
                 </Helmet>
                 <div>
                     <HasLoadedModelContext.Provider value={hasLoadedModel}>
