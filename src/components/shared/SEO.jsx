@@ -1,6 +1,5 @@
 import React from 'react';
 import Helmet from 'next/head';
-import { isBrowser } from '../../services/browser';
 import {
     appName as siteAppName,
     description as siteDescription,
