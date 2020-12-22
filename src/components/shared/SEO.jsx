@@ -1,64 +1,37 @@
 import React from 'react';
-import Helmet from 'react-helmet';
-import { isBrowser } from '../../services/browser';
+import Helmet from 'next/head';
 import {
     appName as siteAppName,
     description as siteDescription,
-    imageUrl as siteImageUrl
+    imageUrl as siteImageUrl,
+    productionUrl,
 } from '../../services/siteMetaData';
 
 const SEO = () => {
     const metaDescription = siteDescription;
-    const imageUrl = isBrowser() && (document.location.origin + siteImageUrl);
+    const imageUrl = productionUrl + siteImageUrl;
     const title = siteAppName;
 
     return (
-        <Helmet
-            htmlAttributes={{ lang: 'en' }}
-            title={title}
-            meta={[
-                {
-                    name: `description`,
-                    content: metaDescription,
-                },
-                {
-                    property: `og:title`,
-                    content: title,
-                },
-                {
-                    property: `og:description`,
-                    content: metaDescription,
-                },
-                {
-                    property: `og:image`,
-                    content: imageUrl,
-                },
-                {
-                    property: `og:type`,
-                    content: 'website',
-                },
-                {
-                    property: `og:url`,
-                    content: isBrowser() && document.location.origin
-                },
-                {
-                    name: `twitter:card`,
-                    content: `summary`,
-                },
-                {
-                    name: `twitter:title`,
-                    content: title,
-                },
-                {
-                    name: `twitter:description`,
-                    content: metaDescription,
-                },
-                {
-                    name: `twitter:image`,
-                    content: imageUrl,
-                },
-            ]}
-        />
+        <Helmet>
+            <title>{title}</title>
+            <meta name="description" content={metaDescription} />
+         
+            <meta name="og:title" property="og:title" content={title} />
+            <meta name="og:description" property="og:description" content={metaDescription} />
+            <meta property="og:image" content={imageUrl} />  
+            <meta property="og:type" content="website" />
+            <meta property="og:site_name" content="Digit-Inator" />
+            <meta property="og:url" content={productionUrl} />
+         
+            <meta name="twitter:title" content={title} />
+            <meta name="twitter:description" content={metaDescription} />
+            <meta name="twitter:image" content={imageUrl} />
+            <meta name="twitter:card" content="summary" />
+
+            <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+            <meta name="robots" content="index, nofollow" />
+        </Helmet>
     );
 }
 
