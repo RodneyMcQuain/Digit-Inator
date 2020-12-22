@@ -4,12 +4,13 @@ import { isBrowser } from '../../services/browser';
 import {
     appName as siteAppName,
     description as siteDescription,
-    imageUrl as siteImageUrl
+    imageUrl as siteImageUrl,
+    productionUrl,
 } from '../../services/siteMetaData';
 
 const SEO = () => {
     const metaDescription = siteDescription;
-    const imageUrl = isBrowser() && (document.location.origin + siteImageUrl);
+    const imageUrl = productionUrl + siteImageUrl;
     const title = siteAppName;
 
     return (
@@ -22,7 +23,7 @@ const SEO = () => {
             <meta property="og:image" content={imageUrl} />  
             <meta property="og:type" content="website" />
             <meta property="og:site_name" content="Digit-Inator" />
-            <meta property="og:url" content={isBrowser() && document.location.origin} />
+            <meta property="og:url" content={productionUrl} />
          
             <meta name="twitter:title" content={title} />
             <meta name="twitter:description" content={metaDescription} />
@@ -31,7 +32,6 @@ const SEO = () => {
 
             <meta name="viewport" content="initial-scale=1.0, width=device-width" />
             <meta name="robots" content="index, nofollow" />
-            <meta charset="UTF-8" />
         </Helmet>
     );
 }
