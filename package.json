@@ -3,6 +3,7 @@
 	"version": "0.1.0",
 	"private": true,
 	"dependencies": {
+		"@meronex/icons": "^4.0.0",
 		"@tensorflow/tfjs": "^2.6.0",
 		"@types/node": "^14.6.4",
 		"@types/react": "^16.9.49",
@@ -13,7 +14,6 @@
 		"react": "^16.13.1",
 		"react-dom": "^16.13.1",
 		"react-helmet": "^6.1.0",
-		"react-icons": "^3.11.0",
 		"react-scripts": "3.4.3",
 		"react-vis": "^1.11.7",
 		"sass": "^1.30.0",

@@ -1,6 +1,6 @@
 import React from 'react';
 import styles from '../../styles/components/shared/LoadingSpinner.module.scss';
-import { ImSpinner2 } from 'react-icons/im';
+import { ImSpinner2 } from '@meronex/icons/im';
 import Icon from './Icon';
 
 interface LoadingSpinnerProps {

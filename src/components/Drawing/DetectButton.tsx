@@ -2,7 +2,7 @@ import React, { MutableRefObject, useContext } from 'react';
 import detect from '../../services/mnist/numberDetection';
 import GradientButton from '../shared/buttons/GradientButton';
 import IconText from '../shared/IconText';
-import { FiBarChart2 } from 'react-icons/fi';
+import { FiBarChart2 } from '@meronex/icons/fi';
 import { HasLoadedModelContext } from '../../services/HasLoadedModelContext';
 import ErrorMessage from '../shared/ErrorMessage';
 import LoadingSpinner from '../shared/LoadingSpinner';

@@ -1,5 +1,5 @@
 import React from 'react';
-import { GiCrystalBall } from 'react-icons/gi';
+import { GiCrystalBall } from '@meronex/icons/gi';
 import { getHighestPrediction } from '../../services/highestPrediction';
 import { Detection } from '../../types/Detection';
 import Card from './Card';
