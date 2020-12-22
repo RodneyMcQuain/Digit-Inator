@@ -2,7 +2,8 @@
 @import '../utilities/colors.module';
 
 .footer {
-    margin: $default-spacing 0 $default-spacing $default-spacing;
+    margin: $default-spacing 0 0 $default-spacing;
+    padding-bottom: $default-spacing;
     position: absolute;
     color: $dark-white;
 }
