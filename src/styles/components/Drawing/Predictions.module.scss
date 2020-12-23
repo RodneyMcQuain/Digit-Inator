@@ -18,9 +18,13 @@
 }
 
 .prediction-container {
-    display: none;
+    display: inline-block;
+    max-width: 0;
+    visibility: hidden;
+    transition: 500ms;
 
     &.appear {
-        display: inline-block;
+        max-width: 1000rem;
+        visibility: visible;
     }
 }
