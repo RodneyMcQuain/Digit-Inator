@@ -6,7 +6,7 @@ import {
     imageUrl as siteImageUrl,
     productionUrl,
 } from '../../services/siteMetaData';
-import { SECONDARY_ACCENT } from '../styles/utilities/colors.module.scss';
+import { SECONDARY_ACCENT } from '../../styles/utilities/colors.module.scss';
 
 const SEO = () => {
     const metaDescription = siteDescription;
@@ -35,7 +35,7 @@ const SEO = () => {
             <meta name="viewport" content="initial-scale=1.0, width=device-width" />
             <meta name="robots" content="index, nofollow" />
 
-            <link rel="manifest" href="/manifest.json" />
+            <link rel="manifest" href="/manifest.webmanifest" />
             <link rel="apple-touch-icon" href="/logo.svg" />
             <meta name="theme-color" content={SECONDARY_ACCENT} />
             <meta http-equiv="X-UA-Compatible" content="IE=edge" />
