@@ -18,15 +18,17 @@ const Predictions = ({ predictions }: PredictionsProps) => {
         shouldPopInPrediction(true);
     }, [predictions]);
     const predictionContainerWithTransition = useTransitionIn(styles.appear, styles['prediction-container']);
+    const PREDICTION_GUESS_ID = 'prediction';
 
     return (
         predictions.length > 0
             ? (
                 <Card className={predictionContainerWithTransition}>
-                    <span>I think your number is</span>
+                    <span id={PREDICTION_GUESS_ID}>I think your number is</span>
                     <div
                         className={`${styles.prediction} ${mightPopInPrediction}`}
                         onAnimationEnd={() => shouldPopInPrediction(false)}
+                        aria-labelledby={PREDICTION_GUESS_ID}
                     >
                         {delayedPrediction}
                     </div>
