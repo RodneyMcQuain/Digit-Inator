@@ -1,4 +1,5 @@
-@import '../../utilities/font-sizes.scss';
+@import '../../utilities/font-sizes';
+@import '../../utilities/transition-time';
 
 .detected-image {
     max-height: 80rem;
@@ -7,4 +8,13 @@
 .detection-guess {
     margin: 0;
     font-size: $normal-font-size * 1.5;
+}
+
+.detection-card {
+    transform: translateX(-5000px);
+    transition: $default-transition-time;
+
+    &.appear {
+        transform: translateX(0);
+    }
 }

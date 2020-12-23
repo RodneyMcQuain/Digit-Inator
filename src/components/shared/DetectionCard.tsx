@@ -6,6 +6,7 @@ import Card from './Card';
 import IconText from './IconText';
 import styles from '../../styles/components/shared/DetectionCard.module.scss';
 import { v4 as getUUID } from 'uuid';
+import { useTransitionIn } from '../../services/useTransitionIn';
 
 interface PredictionCardProps {
     detection: Detection;
@@ -15,9 +16,10 @@ const DetectionCard = ({ detection: { predictions, image, id } }: PredictionCard
     const predictionId = `detection-${id ?? getUUID()}`;
     const prediction = getHighestPrediction(predictions);
     const predictionARIAText = `Prediction: ${prediction}`;
+    const detectionCardWithTransition = useTransitionIn(styles.appear, styles['detection-card']);
 
     return (
-        <Card>
+        <Card className={detectionCardWithTransition}>
             <img
                 src={image}
                 alt={`A drawing that I think is a ${prediction}`}
