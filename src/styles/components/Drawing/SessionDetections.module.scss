@@ -1,0 +1,10 @@
+@import '../../utilities/transition-time';
+
+.session-detections-header {
+    opacity: 0;
+    transition: $default-transition-time;
+
+    &.appear {
+        opacity: 1;
+    }
+}

@@ -4,6 +4,7 @@ import Card from '../shared/Card';
 import styles from '../../styles/components/Drawing/Predictions.module.scss';
 import { getHighestPrediction } from '../../services/highestPrediction';
 import PredictionsGraph from './PredictionsGraph';
+import { useTransitionIn } from '../../services/useTransitionIn';
 
 interface PredictionsProps {
     predictions: number[];
@@ -16,18 +17,21 @@ const Predictions = ({ predictions }: PredictionsProps) => {
         setDelayedPrediction(getHighestPrediction(predictions));
         shouldPopInPrediction(true);
     }, [predictions]);
+    const predictionContainerWithTransition = useTransitionIn(styles.appear, styles['prediction-container']);
 
     return (
-        <Card className={`${styles['prediction-container']} ${predictions.length > 0 ? styles.appear : ''}`}>
-            <span>I think your number is</span>
-            <div
-                className={`${styles.prediction} ${mightPopInPrediction}`}
-                onAnimationEnd={() => shouldPopInPrediction(false)}
-            >
-                {delayedPrediction}
-            </div>
-            <PredictionsGraph predictions={predictions} />
-        </Card>
+        predictions.length > 0 && (
+            <Card className={predictionContainerWithTransition}>
+                <span>I think your number is</span>
+                <div
+                    className={`${styles.prediction} ${mightPopInPrediction}`}
+                    onAnimationEnd={() => shouldPopInPrediction(false)}
+                >
+                    {delayedPrediction}
+                </div>
+                <PredictionsGraph predictions={predictions} />
+            </Card>
+        )
     );
 }
 

@@ -1,5 +1,16 @@
 @import '../../utilities/transition-time';
 
-.predictions-graph rect {
-    transition: $default-transition-time;
+.predictions-graph {
+    transition: 500ms;
+    transform: scale(0);
+    transform-origin: center;
+    margin: 0 auto;
+
+    &.appear {
+        transform: scale(1);
+    }
+
+    rect {
+        transition: $default-transition-time;
+    }
 }
