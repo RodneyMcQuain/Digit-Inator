@@ -5,7 +5,6 @@ import Banner from '../components/Banner/Banner';
 import Footer from '../components/Footer';
 import { loadModel } from '../services/mnist/loadModel';
 import { HasLoadedModelContext } from '../services/HasLoadedModelContext';
-import SEO from '../components/shared/SEO';
 
 function App() {
     const [hasLoadedModel, setHasLoadedModel] = useState(false);
@@ -20,7 +19,6 @@ function App() {
         <>
             <Banner />
             <div className={styles.App}>
-                <SEO />
                 <div>
                     <HasLoadedModelContext.Provider value={hasLoadedModel}>
                         <DrawingCanvasContainer />
