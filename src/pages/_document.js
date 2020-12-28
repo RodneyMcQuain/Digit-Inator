@@ -1,22 +1,31 @@
-import React from 'react';
-import Helmet from 'next/head';
+import Document, { Html, Head, Main, NextScript } from 'next/document'
 import {
     appName as siteAppName,
     description as siteDescription,
     imageUrl as siteImageUrl,
     productionUrl,
-} from '../../services/siteMetaData';
-import { SECONDARY_ACCENT } from '../../styles/utilities/colors.module.scss';
+} from '../services/siteMetaData';
+export default class extends Document {
+    static getInitialProps = async ctx => await Document.getInitialProps(ctx);
 
-const SEO = () => {
+    render = () => (
+        <Html lang="en" dir="ltr">
+            <SiteHead />
+            <body>
+                <Main />
+                <NextScript />
+            </body>
+        </Html>
+    );
+}
+
+const SiteHead = () => {
     const metaDescription = siteDescription;
     const imageUrl = productionUrl + siteImageUrl;
     const title = siteAppName;
 
     return (
-        <Helmet>
-            <html lang="en" />
-
+        <Head>
             <title>{title}</title>
             <meta name="description" content={metaDescription} />
 
@@ -32,15 +41,16 @@ const SEO = () => {
             <meta name="twitter:image" content={imageUrl} />
             <meta name="twitter:card" content="summary" />
 
-            <meta name="viewport" content="initial-scale=1.0, width=device-width" />
             <meta name="robots" content="index, nofollow" />
 
-            <link rel="manifest" href="/manifest.webmanifest" />
+            <link rel="manifest" href="/manifest.json" />
+            <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+            <meta name="theme-color" content="#CA9EFF" />
             <link rel="apple-touch-icon" href="/logo.svg" />
-            <meta name="theme-color" content={SECONDARY_ACCENT} />
+            <link rel="icon" href="/favicon.ico" />
+            <link rel="icon" href="/logo.svg" type="image/svg+xml" sizes="any" />
             <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        </Helmet>
+            <meta name="mobile-web-app-capable" content="yes" />
+        </Head>
     );
 }
-
-export default SEO;
