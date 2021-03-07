@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="public/icons/icon-128x128.png" alt="The Digit-Inator logo. Two letters, &quot;D&quot; and &quot;I&quot;, but the &quot;D&quot; is made to look like a zero and the &quot;I&quot; to look like a one.">
+</p>
+
 # Digit-Inator
 The Digit-Inator allows you to convert your favorite hand drawn digit to text with the latest and greatest in computer vision.
 
