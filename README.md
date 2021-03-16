@@ -21,3 +21,11 @@ The Digit-Inator allows you to convert your favorite hand drawn digit to text wi
 ## Run the Application in Production Mode
 1. Run `yarn build` at the root of the project
 2. Run `yarn start` at the root of the project
+
+## Web Tech Stack
+* Next.js (React)
+* TensorFlow.js
+* TypeScript
+* SCSS Modules
+* Jest
+* React Testing Library
