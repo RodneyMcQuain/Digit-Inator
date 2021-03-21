@@ -1,12 +1,18 @@
 <p align="center">
-  <img src="public/icons/icon-128x128.png" alt="The Digit-Inator logo. Two letters, &quot;D&quot; and &quot;I&quot;, but the &quot;D&quot; is made to look like a zero and the &quot;I&quot; to look like a one.">
+  <img 
+    src="public/icons/icon-128x128.png" 
+    alt="The Digit-Inator logo. Two letters, &quot;D&quot; and &quot;I&quot;, but the &quot;D&quot; is made to look like a zero and the &quot;I&quot; to look like a one."
+  />
 </p>
 
 # Digit-Inator
 The Digit-Inator allows you to convert your favorite hand drawn digit to text with the latest and greatest in computer vision.
 
 <p align="center">
-  <img src="https://user-images.githubusercontent.com/37189243/111891966-51e20500-89cd-11eb-9049-67d727572da8.gif" />
+  <img 
+    src="https://user-images.githubusercontent.com/37189243/111891966-51e20500-89cd-11eb-9049-67d727572da8.gif"
+    alt="A demo of the Digit-Inator. The user draws individual numbers, 0-9, and the user receives a correct prediction from the Digit-Inator of what they drew for each number."
+  />
   <br />
   <a href="https://digit-inator.netlify.app/">Try out the Digit-Inator</a>
 </p>
