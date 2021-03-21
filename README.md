@@ -3,7 +3,13 @@
 </p>
 
 # Digit-Inator
-The Digit-Inator allows you to convert your favorite hand drawn digit to text with the latest and greatest in computer vision. [Try out the Digit-Inator.](https://digit-inator.netlify.app/)
+The Digit-Inator allows you to convert your favorite hand drawn digit to text with the latest and greatest in computer vision.
+
+<p align="center">
+  <img src="https://user-images.githubusercontent.com/37189243/111891966-51e20500-89cd-11eb-9049-67d727572da8.gif" />
+  <br />
+  <a href="https://digit-inator.netlify.app/">Try out the Digit-Inator</a>
+</p>
 
 ## Installation
 1. Install [npm](https://www.npmjs.com/get-npm)
