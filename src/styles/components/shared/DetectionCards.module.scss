@@ -5,13 +5,11 @@
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: center;
-    
-    > * {
-        margin-right: $default-spacing;
-        margin-bottom: $default-spacing;
-    }
 
-    > *:last-child {
-        margin-right: 0;
+    $card-right-margin: $default-spacing;
+    margin-right: -$card-right-margin;
+    > * {
+        margin-right: $card-right-margin;
+        margin-bottom: $default-spacing;
     }
 }
