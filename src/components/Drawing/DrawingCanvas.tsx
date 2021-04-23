@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, MutableRefObject } from 'react';
 import { getViewportWidth, getViewportHeight } from '../../services/dimensions';
 import styles from '../../styles/components/Drawing/DrawingCanvas.module.scss';
+import { DEFAULT_SPACING_PX } from '../../styles/utilities/spacing';
 
 interface DrawingCanvasProps {
     canvasRef: MutableRefObject<HTMLCanvasElement>;
@@ -91,7 +92,7 @@ const setDimensions = (canvas: HTMLCanvasElement) => {
     const viewportWidth = getViewportWidth();
     const viewportHeight = getViewportHeight();
 
-    const HORIZONTAL_PADDING = 10;
+    const HORIZONTAL_PADDING = DEFAULT_SPACING_PX;
     const newWidth = Math.min(viewportWidth - (HORIZONTAL_PADDING * 2), CANVAS_SIZE_PX);
     setCanvasPropertyIfChanged('width', newWidth, canvas);
 

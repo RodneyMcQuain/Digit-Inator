@@ -1,7 +1,7 @@
 @import '../../utilities/colors.module';
 @import '../../utilities/font-sizes';
 @import '../../utilities/transition-time';
-@import '../../utilities/spacing';
+@import '../../utilities/spacing.module';
 
 .prediction {
     font-size: $normal-font-size * 2.5;

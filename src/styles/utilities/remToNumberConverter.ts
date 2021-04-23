@@ -1,0 +1,1 @@
+export const remToNumber = (string: string): number => Number(string.replace('rem', ''));
