@@ -1,0 +1,1 @@
+export const getGuessedNumber = () => cy.get('[data-testid="guessed-number"]');

@@ -1,0 +1,4 @@
+{
+    "fixturesFolder": "src/tests/integration/fixtures",
+    "integrationFolder": "src/tests/integration/tests"
+}

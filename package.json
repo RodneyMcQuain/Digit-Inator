@@ -24,14 +24,16 @@
 		"@testing-library/jest-dom": "^4.2.4",
 		"@testing-library/react": "^9.3.2",
 		"@testing-library/user-event": "^7.1.2",
+		"cypress": "^7.1.0",
 		"env-cmd": "^10.1.0"
 	},
 	"scripts": {
 		"dev": "next dev",
 		"build": "next build && next export",
 		"start": "next start",
-		"test": "react-scripts test --watchAll=false",
-		"test:watch": "react-scripts test"
+		"test:unit": "react-scripts test --watchAll=false",
+		"test:unit-watch": "react-scripts test",
+		"test:integration": "cypress open"
 	},
 	"browserslist": {
 		"production": [

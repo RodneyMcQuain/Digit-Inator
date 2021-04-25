@@ -28,7 +28,11 @@ The Digit-Inator allows you to convert your favorite hand drawn digit to text wi
 3. Navigate to `http://localhost:3000/` to view the application
 
 ## Run Tests
-1. Run `yarn test` at the root of the project
+### Run Unit Tests
+1. Run `yarn test:unit` at the root of the project
+### Run Integration Tests
+1. Run `yarn test:integration` at the root of the project
+2. In the Cypress runner, click the test suite you want to run or click "Run all specs"
 
 ## Run the Application in Production Mode
 1. Run `yarn build` at the root of the project
@@ -41,3 +45,4 @@ The Digit-Inator allows you to convert your favorite hand drawn digit to text wi
 * SCSS Modules
 * Jest
 * React Testing Library
+* Cypress
