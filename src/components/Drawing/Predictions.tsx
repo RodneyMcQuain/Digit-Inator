@@ -29,6 +29,7 @@ const Predictions = ({ predictions }: PredictionsProps) => {
                         className={`${styles.prediction} ${mightPopInPrediction}`}
                         onAnimationEnd={() => shouldPopInPrediction(false)}
                         aria-labelledby={PREDICTION_GUESS_ID}
+                        data-testid="guessed-number"
                     >
                         {delayedPrediction}
                     </div>

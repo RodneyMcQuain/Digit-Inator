@@ -1,27 +1,27 @@
 import React from 'react';
 import { render, screen, fireEvent, cleanup } from '@testing-library/react';
 import '@testing-library/jest-dom/extend-expect';
-import DetectButton from '../../../components/Drawing/DetectButton';
-import detect from '../../../services/mnist/numberDetection';
-import { HasLoadedModelContext } from '../../../services/HasLoadedModelContext';
-import ErrorMessage from '../../../components/shared/ErrorMessage';
-import GradientButton from '../../../components/shared/buttons/GradientButton';
-import LoadingSpinner from '../../../components/shared/LoadingSpinner';
+import DetectButton from '../../../../components/Drawing/DetectButton';
+import detect from '../../../../services/mnist/numberDetection';
+import { HasLoadedModelContext } from '../../../../services/HasLoadedModelContext';
+import ErrorMessage from '../../../../components/shared/ErrorMessage';
+import GradientButton from '../../../../components/shared/buttons/GradientButton';
+import LoadingSpinner from '../../../../components/shared/LoadingSpinner';
 import {
     buttonFake, buttonFakeTestId,
     errorMessageFake, errorMessageFakeTestId,
     loadingSpinnerFake, loadingSpinnerFakeId,
 } from '../../utilities/componentFakes';
 
-jest.mock('../../../services/mnist/numberDetection');
+jest.mock('../../../../services/mnist/numberDetection');
 
-jest.mock('../../../components/shared/ErrorMessage');
+jest.mock('../../../../components/shared/ErrorMessage');
 ErrorMessage.mockImplementation(errorMessageFake);
 
-jest.mock('../../../components/shared/buttons/GradientButton');
+jest.mock('../../../../components/shared/buttons/GradientButton');
 GradientButton.mockImplementation(buttonFake);
 
-jest.mock('../../../components/shared/LoadingSpinner');
+jest.mock('../../../../components/shared/LoadingSpinner');
 LoadingSpinner.mockImplementation(loadingSpinnerFake);
 
 const BASE64_CANVAS_DATA = 'base64data';
