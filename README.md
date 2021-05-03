@@ -70,7 +70,7 @@ The Digit-Inator allows you to convert your favorite hand drawn digit to text wi
 * Convolutional Neural Network (CNN)
 
 ## Number Detection Model Details
-Model Accuracy: 99.120%
+**Model Accuracy**: 99.120%
 ### Confusion Matrix Plot
 ![Confusion Matrix Plot](./number_detection_model/confusion_matrix_plot.png)
 ### Confusion Matrix Error Plot
