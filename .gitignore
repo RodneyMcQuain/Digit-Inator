@@ -27,3 +27,8 @@ yarn-debug.log*
 yarn-error.log*
 
 globalConfig.json
+
+number_detection_model.h5
+
+# python
+__pycache__
