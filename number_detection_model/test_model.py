@@ -1,7 +1,3 @@
-from numpy.random import seed
-seed(1)
-import tensorflow
-tensorflow.random.set_seed(2)
 import os
 import tensorflow as tf
 from sklearn.metrics import classification_report, confusion_matrix
@@ -12,10 +8,11 @@ from tensorflow.keras.datasets import mnist
 from tensorflow.keras.models import load_model
 from tensorflow.keras.utils import to_categorical
 import time
+from seed_setter import set_seed
 from pixel_preparer import prepare_pixels
 from mnist_dataset_loader import load_mnist_dataset
 from mnist_dataset_constants import MNIST_DATASET_IMAGE_SIZE
-import os
+from model_filename import model_filename
 
 def save_figure(fig_id, fig_extension="png", resolution=300):
     path = os.path.join(os.path.dirname(__file__), fig_id + "." + fig_extension)
@@ -27,7 +24,7 @@ def test():
 
 	trainX, trainY, testX, testY = load_mnist_dataset()
 	trainX, testX = prepare_pixels(trainX, testX)
-	model = load_model('final_model.h5')
+	model = load_model(model_filename)
 
 	yPred = np.argmax(model.predict(testX), axis=-1)
 	yPred_probabilities = model.predict(testX)
@@ -55,4 +52,5 @@ def test():
 	
 	print('Total time for model testing: %s' % {round(time.time() - start_time, 2)})
 
+set_seed()
 test()

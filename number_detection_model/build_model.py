@@ -1,7 +1,3 @@
-from numpy.random import seed
-seed(1)
-import tensorflow
-tensorflow.random.set_seed(2)
 from tensorflow.keras.models import Sequential
 from tensorflow.keras.layers import Conv2D
 from tensorflow.keras.layers import MaxPooling2D
@@ -9,9 +5,11 @@ from tensorflow.keras.layers import Dense
 from tensorflow.keras.layers import Flatten
 from tensorflow.keras.optimizers import SGD
 import time
+from seed_setter import set_seed
 from pixel_preparer import prepare_pixels
 from mnist_dataset_loader import load_mnist_dataset
 from mnist_dataset_constants import MNIST_DATASET_IMAGE_SIZE
+from model_filename import model_filename
 
 def define_model():
 	model = Sequential()
@@ -35,7 +33,8 @@ def build():
 	model = define_model()
 	model.fit(trainX, trainY, epochs=10, batch_size=32, verbose=0)
 	
-	model.save('number_detection_model.h5')
+	model.save(model_filename)
 	print('Total time for model creation: %s' % {round(time.time() - start_time, 2)})
 
+set_seed()
 build()

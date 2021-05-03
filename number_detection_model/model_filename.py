@@ -1,0 +1,1 @@
+model_filename = 'number_detection_model.h5'
