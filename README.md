@@ -18,7 +18,7 @@ The Digit-Inator allows you to convert your favorite hand drawn digit to text wi
 </p>
 
 ## Table of Contents
-* [Web App Installation](#web-app-installation)
+* [Web Application Installation](#web-application-installation)
 * [Run the Application Locally](#run-the-application-locally)
 * [Run Tests](#run-tests)
   + [Run Unit Tests](#run-unit-tests)
@@ -34,7 +34,7 @@ The Digit-Inator allows you to convert your favorite hand drawn digit to text wi
   + [Steps](#steps)
 * [Edit the Logo](#edit-the-logo)
 
-## Web App Installation
+## Web Application Installation
 1. Install [npm](https://www.npmjs.com/get-npm)
 2. Install [yarn](https://classic.yarnpkg.com/en/docs/install/#windows-stable) 
 3. Run `yarn` at the root of the project to install dependencies
