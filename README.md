@@ -32,6 +32,7 @@ The Digit-Inator allows you to convert your favorite hand drawn digit to text wi
 * [Modify the Number Detection Model](#modify-the-number-detection-model)
   + [Prerequisites](#prerequisites)
   + [Steps](#steps)
+* [Reinstate the Server](#reinstate-the-server)
 * [Edit the Logo](#edit-the-logo)
 
 ## Web Application Installation
@@ -96,7 +97,7 @@ Python, version between 3.7 and 3.9 exclusive
 tensorflowjs_converter --input_format=keras --output_format=tfjs_layers_model number_detection_model.h5 ./public/model
 ```
 
-## Reinstate the Node.js Server
+## Reinstate the Server
 The server didn't add much value, increased the complexity of the codebase, and increased the cost of hosting.  So, the server was removed. The server used:
 * Node.js
 * Express.js
