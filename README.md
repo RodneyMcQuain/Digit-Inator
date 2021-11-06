@@ -96,5 +96,15 @@ Python, version between 3.7 and 3.9 exclusive
 tensorflowjs_converter --input_format=keras --output_format=tfjs_layers_model number_detection_model.h5 ./public/model
 ```
 
+## Reinstate the Node.js Server
+The server didn't add much value, increased the complexity of the codebase, and increased the cost of hosting.  So, the server was removed. The server used:
+* Node.js
+* Express.js
+* TypeScript
+* MongoDB
+* Mongoose
+* Jest
+If you have any ideas pertinent to this project that require a server—feel free to fork this repository and reference [https://github.com/RodneyMcQuain/Digit-Inator/pull/1](the pull request that removed the server) to reinstate it.
+
 ## Edit the Logo
 Install [AdobeXD](https://www.adobe.com/products/xd.html) to build off of the current `.xd` file in the `design` directory.
